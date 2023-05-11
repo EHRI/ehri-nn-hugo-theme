@@ -10,7 +10,7 @@
         <ul class="menu-1">
             {{- range site.Menus.footer }}
             <li>
-                <a href="{{ .PageRef }}">{{ .Name }}</a>
+                <a href="{{ .PageRef | relURL }}">{{ .Name }}</a>
             </li>
             {{- end }}
         </ul>
@@ -21,7 +21,7 @@
                 <ul>
                     {{- range site.Menus.services }}
                     <li>
-                        <a target="_blank" href="{{ .PageRef }}">{{ .Name }}</a>
+                        <a target="_blank" href="{{ .PageRef | relURL }}">{{ .Name }}</a>
                     </li>
                     {{ end }}
                 </ul>
