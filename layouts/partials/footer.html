@@ -2,7 +2,7 @@
     <div class="footer-content">
         <div class="footer-headings">
             <div class="logo">
-                <a href="{{ relLangURL "" }}"><img src="/images/ehri-logo-beige.svg" alt="EHRI Logo"/></a>
+                <a href="{{ relLangURL "" }}"><img src="{{ "images/ehri-logo-beige.svg" | relURL }}" alt="EHRI Logo"/></a>
             </div>
             <a href="{{ relLangURL "" }}" class="title">{{ .Site.Title }}</a>
         </div>
@@ -53,7 +53,7 @@
         <div class="partners">
             <p>Partners / Funders</p>
             <div class="partner-logos">
-                <img src="/images/eu-logo.svg" alt="European Commission"/>
+                <img src="{{ "images/eu-logo.svg" | relURL }}" alt="European Commission"/>
             </div>
         </div>
 
