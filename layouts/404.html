@@ -1,7 +1,9 @@
 {{ define "main" }}
-<main id="main">
+<section id="main" class="page-content">
     <div>
-        <h1 id="title"><a href="{{ "" | relURL }}">Go Home</a></h1>
+        <h2>Page not found</h2>
+        <p>There's nothing available at the URL right now.</p>
+        <a class="button-primary" href="{{ "" | relURL }}">Return to the home page</a>
     </div>
-</main>
+</section>
 {{ end }}
