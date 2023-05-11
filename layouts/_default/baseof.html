@@ -7,6 +7,15 @@
         <title>{{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
         <meta name="viewport" content="width=device-width,minimum-scale=1">
         <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ "images/apple-touch-icon-152x152.png" | relURL }}" />
+        <link rel="icon" href="{{ "images/favicon.ico" | relURL }}" sizes="16x16" />
+        <link rel="icon" type="image/png" href="{{ "images/favicon-16x16.png" | relURL }}" sizes="16x16" />
+        <link rel="icon" type="image/png" href="{{ "images/favicon-32x32.png" | relURL }}" sizes="32x32" />
+        <link rel="icon" type="image/png" href="{{ "images/favicon-96x96.png" | relURL }}" sizes="96x96" />
+        <link rel="icon" type="image/png" href="{{ "images/favicon-128.png" | relURL }}" sizes="128x128" />
+        <link rel="icon" type="image/png" href="{{ "images/favicon-196x196.png" | relURL }}" sizes="196x196" />
+
         {{ hugo.Generator }}
         {{/* NOTE: For Production make sure you add `HUGO_ENV="production"` before your build command */}}
         {{ $production := eq (getenv "HUGO_ENV") "production" | or (eq site.Params.env "production") }}
