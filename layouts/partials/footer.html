@@ -1,0 +1,65 @@
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-headings">
+            <div class="logo">
+                <a href="{{ relLangURL "" }}"><img src="/images/ehri-logo-beige.svg" alt="EHRI Logo"/></a>
+            </div>
+            <a href="{{ relLangURL "" }}" class="title">{{ .Site.Title }}</a>
+        </div>
+
+        <ul class="menu-1">
+            {{- range site.Menus.footer }}
+            <li>
+                <a href="{{ .PageRef }}">{{ .Name }}</a>
+            </li>
+            {{- end }}
+        </ul>
+
+        <ul class="menu-2">
+            <li>
+                <a href="{{ relLangURL "services" }}">Services</a>
+                <ul>
+                    {{- range site.Menus.services }}
+                    <li>
+                        <a target="_blank" href="{{ .PageRef }}">{{ .Name }}</a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="menu-3">
+            <li>
+                <a href="{{ relLangURL "contact" }}">Contact</a>
+                <div class="contact-card">
+                    <header>
+                        <a href="mailto:{{ site.Params.contact_email }}">
+                            {{ site.Params.contact_name }}
+                        </a>
+                    </header>
+                    <a href="mailto:{{ site.Params.contact_email }}">
+                        <i class="fa fa-fw fa-envelope-o"></i>
+                        {{ site.Params.contact_email }}
+                    </a>
+                </div>
+            </li>
+
+        </ul>
+
+        <div class="social">
+            {{ partial "social.html" }}
+        </div>
+
+        <div class="partners">
+            <p>Partners / Funders</p>
+            <div class="partner-logos">
+                <img src="/images/eu-logo.svg" alt="European Commission"/>
+            </div>
+        </div>
+
+        <div class="footer-copyright">
+            {{ replace .Site.Copyright "{year}" now.Year }}
+        </div>
+    </div>
+
+</footer>
