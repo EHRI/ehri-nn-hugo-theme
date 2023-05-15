@@ -25,9 +25,10 @@
 
         <div class="navbar">
             <ul class="text-items">
-                {{- range site.Menus.main }}
+                {{ range site.Menus.main }}
+                    {{ $page := site.GetPage .PageRef }}
                     <li><a href="{{ .PageRef | relLangURL }}">{{ .Name }}</a></li>
-                {{- end }}
+                {{ end }}
             </ul>
             <div class="social">
                 {{ partial "social.html" }}
