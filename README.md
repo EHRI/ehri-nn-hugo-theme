@@ -1,14 +1,7 @@
 Hugo theme for EHRI National Node websites
 ==========================================
 
-This is a work-in-progress example EHRI National Node theme, multilingual for English and Welsh 
-(apologies to Welsh speakers for the incorrect translations.)
-
-To adapt this theme, fork the repository and change:
-
- - things relating to the languages in `config.yaml`
- - the equivalent translations in `i18n/cy.yaml`
- - files in the content directory ending with `.cy.md`
+### Content types
 
 In the content front matter the `type` key affects the template used. If you don't specify a `type` value,
 the default single page template will be used which simply renders the title and the content as markdown (or
@@ -37,7 +30,3 @@ intro
 The is some markdown content rendered inside a <p class="intro"></p> tag.
 {{ < /intro >}}
 ```
-
----
-
-TODO: lots more...
