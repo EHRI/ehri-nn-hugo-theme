@@ -45,3 +45,28 @@ more_about_mission:
 
 go_to:
   other: Go to {{ .Name }}
+
+# Contact page
+contact_send_message:
+  other: Send us a message
+
+contact_form_name:
+  other: Name
+
+contact_form_email:
+  other: Email
+
+contact_form_subject:
+  other: Subject
+
+contact_form_message:
+  other: Leave us a message...
+
+contact_form_send:
+  other: Send message
+
+contact_coordinators:
+  other: Coordinators for {{ .Title }}
+
+contact_social:
+  other: EHRI on social media
