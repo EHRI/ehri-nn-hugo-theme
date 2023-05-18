@@ -69,4 +69,10 @@ contact_coordinators:
   other: Coordinators for {{ .Title }}
 
 contact_social:
-  other: EHRI on social media
+  other: "{{ .Title }} on social media"
+
+contact_thanks:
+  other: Thanks for your message
+
+contact_back:
+  other: Go back to the form

@@ -6,8 +6,12 @@
 
         <div class="contact-info">
             <div class="form">
+                {{ if .Params.thanks }}
+                    <h2>{{ i18n "contact_thanks" }}</h2>
+                    <p><a href="{{ relLangURL "contact" }}">{{ i18n "contact_back" }}</a></p>
+                {{ else }}
                 <h2>{{ i18n "contact_send_message" }}</h2>
-                <form class="form contact-form" method="post" action="{{ .Params.action }}">
+                <form class="form contact-form" method="post" action="{{ relLangURL .Params.action }}">
                     <div class="form-group">
                         <label for="form-name">{{ i18n "contact_form_name" }} *</label>
                         <input type="text" name="name" id="form-name" placeholder="{{ i18n "contact_form_name" }}" required/>
@@ -26,6 +30,7 @@
                     </div>
                     <button class="button-primary" type="submit">{{ i18n "contact_form_send" }}</button>
                 </form>
+                {{ end }}
             </div>
             <div class="contacts">
                 {{ $key := printf "people_%s" .Language }}
@@ -52,7 +57,7 @@
                     </div>
                 {{ end }}
 
-                <h4>{{ i18n "contact_social" }}</h4>
+                <h4>{{ i18n "contact_social" (dict "Title" .Site.Params.TitleShort) }}</h4>
                 {{ partial "social" }}
             </div>
         </div>
