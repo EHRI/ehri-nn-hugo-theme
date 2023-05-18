@@ -4,8 +4,4 @@
         <h1>{{ .Title }}</h1>
         {{ .Content }}
     </section>
-
-    {{ if .Params.show_people }}
-        {{ partial "people" }}
-    {{ end }}
 {{ end }}
