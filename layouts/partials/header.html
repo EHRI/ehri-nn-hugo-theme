@@ -27,7 +27,7 @@
             <ul class="text-items">
                 {{ range site.Menus.main }}
                     {{ $page := site.GetPage .PageRef }}
-                    <li><a href="{{ .PageRef | relLangURL }}">{{ .Name }}</a></li>
+                    <li><a href="{{ .PageRef | relLangURL }}">{{ or (T .Identifier) .Name | safeHTML }}</a></li>
                 {{ end }}
             </ul>
             <div class="social">

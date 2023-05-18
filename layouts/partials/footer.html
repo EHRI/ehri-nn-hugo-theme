@@ -10,18 +10,18 @@
         <ul class="menu-1">
             {{- range site.Menus.footer }}
             <li>
-                <a href="{{ .PageRef | relURL }}">{{ .Name }}</a>
+                <a href="{{ .PageRef | relURL }}">{{ or (T .Identifier) .Name | safeHTML }}</a>
             </li>
             {{- end }}
         </ul>
 
         <ul class="menu-2">
             <li>
-                <a href="{{ relLangURL "services" }}">Services</a>
+                <a href="{{ relLangURL "services" }}">{{ i18n "services" }}</a>
                 <ul>
                     {{- range site.Menus.services }}
                     <li>
-                        <a target="_blank" href="{{ .PageRef | relURL }}">{{ .Name }}</a>
+                        <a target="_blank" href="{{ .PageRef | relURL }}">{{ or (T .Identifier) .Name | safeHTML }}</a>
                     </li>
                     {{ end }}
                 </ul>
@@ -30,7 +30,7 @@
 
         <ul class="menu-3">
             <li>
-                <a href="{{ relLangURL "contact" }}">Contact</a>
+                <a href="{{ relLangURL "contact" }}">{{ i18n "contact" }}</a>
                 <div class="contact-card">
                     <header>
                         <a href="mailto:{{ site.Params.contact_email }}">
@@ -51,7 +51,7 @@
         </div>
 
         <div class="partners">
-            <p>Partners / Funders</p>
+            <p>{{ i18n "partners_funders" }}</p>
             <div class="partner-logos">
                 <img src="{{ "images/eu-logo.svg" | relURL }}" alt="European Commission"/>
             </div>
