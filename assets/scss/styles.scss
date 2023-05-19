@@ -64,30 +64,14 @@ $breakpoint-phone: 576px;
   --font-weight-bold: #{$font-weight-bold};
   --font-weight-bolder: #{$font-weight-bolder};
 
-  --margin-page-v: 3.1875rem;
-  --margin-page-h: 3.4rem;
-
-  @media (min-width: $max-width) {
-    // This could add extra margins to the page
-    //--margin-page-h: 12%;
-  }
+  --margin-page-v: max(1rem, min(3.1875rem, 5vw));
+  --margin-page-h: max(1rem, 5vw);
 
   --margin-section-v: 5rem;
   --margin-section-h: var(--margin-page-h);
 
   --padding-page-content-v: 4rem;
-  --padding-page-content-h: 18%;
-
-  @media (max-width: $breakpoint-tablet) {
-    --margin-page-v: 2.9rem;
-    --margin-page-h: 2.625rem;
-
-    --margin-section-v: 2rem;
-  }
-  @media (max-width: $breakpoint-phone) {
-    --margin-page-v: 1.25rem;
-    --margin-page-h: 1.25rem;
-  }
+  --padding-page-content-h: 18vw;
 }
 
 html {
@@ -162,6 +146,28 @@ a {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+}
+
+figure {
+  margin-top: 0;
+  background-color: var(--beige);
+
+  figcaption {
+    padding: 0.4vw 1.2vw
+  }
+
+  img {
+    width: 100%;
+  }
+
+  h4,
+  h5 {
+    margin: 1rem 0;
+    font-size: 1.2625rem;
+  }
+  p {
+    font-size: $font-size-sm;
+  }
 }
 
 @media (max-width: $breakpoint-tablet) {
@@ -418,8 +424,8 @@ textarea {
 
 // region Home page sections
 .hero {
-  padding-top: 4rem;
-  padding-bottom: 8rem;
+  padding-top: unquote("min(6rem, 8vw)");
+  padding-bottom: unquote("min(10rem, 12vw)");
   margin-left: auto;
   margin-right: auto;
 
