@@ -35,6 +35,7 @@ $space-xl: 2rem;
 $wine-red: #771646;
 $purple: #3E274B;
 $grey-dark: #46463D;
+$grey-darker: #3B3B3B;
 $beige: #D5D2B8;
 $beige-light: linear-gradient(0deg, rgba(213, 210, 184, 0.2), rgba(213, 210, 184, 0.2)), #FFFFFF;
 $white: #FFF;
@@ -51,6 +52,7 @@ $breakpoint-phone: 576px;
   --wine-red: #{$wine-red};
   --grey-mid: rgba(0,0,0,0.15);
   --grey-dark: #{$grey-dark};
+  --grey-darker: #{$grey-darker};
   --beige: #{$beige};
   --beige-light-bg: #{$beige-light};
   --white: #{$white};
@@ -138,12 +140,67 @@ h6 {
   font-size: $font-size-base;
 }
 
+// Default links
 a {
   color: $wine-red;
   text-decoration: none;
 }
 
-p {
+// Main text links. Probably missing some uses here.
+main {
+  p,
+  ul,
+  ol,
+  dl {
+    a {
+      color: var(--grey-darker);
+      font-weight: bold;
+      text-decoration: none;
+      background-image: linear-gradient(to bottom, transparent calc(100% - .25rem), var(--beige) calc(100% - .25rem));
+      background-position: bottom;
+      background-repeat: no-repeat;
+      background-size: 100% .25rem;
+      display: inline-block;
+      padding-left: .25rem;
+      padding-right: .25rem;
+      transition-duration: 0.2s;
+      transition-property: background-color background-size color;
+
+      &:hover {
+        color: var(--wine-red);
+        background-image: linear-gradient(to bottom, var(--beige) calc(100% - .5rem), var(--beige) calc(100% - .5rem));
+        background-size: 100% 100%;
+      }
+    }
+  }
+}
+
+// Footnote links
+main sup a {
+  display: inline;
+  font-size: 0.8rem;
+  font-family: var(--font-family-headings);
+  font-weight: bold;
+  color: var(--wine-red);
+  text-decoration: none;
+  background-image: none;
+}
+
+// Footnote body
+.footnotes {
+  font-family: var(--font-family-headings);
+  ol {
+    margin-top: 3rem;
+    padding-left: 1rem;
+  }
+  a,
+  a:hover
+  {
+    background-image: none;
+  }
+}
+
+p  {
   margin-top: 0;
   margin-bottom: 1rem;
 }
@@ -173,6 +230,52 @@ figure {
 .fig-side {
   display: grid;
   grid-template-columns: 2fr 1fr;
+}
+
+// Tables
+main {
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 4rem 0;
+    font-size: 0.9rem;
+    font-family: var(--font-family-headings);
+  }
+
+  table,
+  td,
+  th
+  {
+    border: 1px solid #8f8f8f;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  tbody tr:hover {
+    background: var(--beige-light-bg);
+  }
+
+  thead {
+    background-color: var(--beige);
+  }
+
+  th,
+  td
+  {
+    padding: 0.8vw 1vw;
+  }
+}
+
+blockquote {
+  margin-left: 0;
+  p {
+    display: block;
+    line-height: 1.6rem;
+    padding: 2vw;
+    margin-bottom: 2vw;
+    color: var(--wine-red);
+    border-left: .25rem solid var(--beige);
+  }
 }
 
 @media (max-width: $breakpoint-tablet) {
@@ -289,6 +392,7 @@ figure {
   background-color: transparent;
   font-size: $font-size-md;
   line-height: 1.35rem;
+  background-image: none;
 
   &:hover {
     border-color: var(--beige);
@@ -474,7 +578,7 @@ section,
     }
   }
 
-  li {
+  ul li {
     list-style-type: '—  ';
   }
 }
@@ -1139,12 +1243,6 @@ header.main {
       }
     }
   }
-}
-
-/**
- * Main content
- */
-.main-content {
 }
 
 /**
