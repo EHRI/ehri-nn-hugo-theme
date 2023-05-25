@@ -114,14 +114,14 @@ $breakpoint-phone: 576px;
   --margin-section-v: max(2rem, min(5rem, 7vw));
   --margin-section-h: var(--margin-page-h);
 
-  --padding-page-content-v: max(2rem, min(6rem, 10vw));
+  --padding-page-content-v: max(2rem, min(8rem, 10vw));
   --padding-page-content-h: 18vw;
 }
 
 html {
   // Dynamic font-size test...
   //font-size: calc(15px + 0.190625vw);
-  font-size: Min(Max(1rem, 4vw), 22px);
+  font-size: Min(Max(1rem, 4vw), 16px);
   height: 100vh;
   background-color: var(--white);
 }
@@ -665,8 +665,8 @@ section,
     grid-template-rows: 15% min-content min-content 5% 25% 20%;
 
     // Hero section is slightly larger than the default grid
-    margin-left: -4rem;
-    margin-right: calc(-4rem - var(--margin-section-h));
+    margin-left: -5vw;
+    margin-right: calc(-5vw - var(--margin-section-h));
 
 
     h1 {
