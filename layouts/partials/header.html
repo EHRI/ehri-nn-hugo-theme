@@ -25,9 +25,11 @@
 
         <div class="navbar">
             <ul class="text-items">
+                {{ $page := . }}
                 {{ range site.Menus.main }}
-                    {{ $page := site.GetPage .PageRef }}
-                    <li><a href="{{ .PageRef | relLangURL }}">{{ or (T .Identifier) .Name | safeHTML }}</a></li>
+                    <li {{ if $page.IsMenuCurrent .Menu . }}class="active"{{ end }}>
+                        <a href="{{ .PageRef | relLangURL }}">{{ or (T .Identifier) .Name | safeHTML }}</a>
+                    </li>
                 {{ end }}
             </ul>
             <div class="social">

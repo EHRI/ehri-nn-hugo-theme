@@ -1,5 +1,6 @@
 <footer class="footer">
     <div class="footer-content">
+        {{ $page := .}}
         <div class="footer-headings">
             <div class="logo">
                 <a href="{{ relLangURL "" }}"><img src="{{ "images/ehri-logo-beige.svg" | relURL }}" alt="EHRI Logo"/></a>
@@ -9,7 +10,7 @@
 
         <ul class="menu-1">
             {{- range site.Menus.footer }}
-            <li>
+            <li {{ if $page.IsMenuCurrent .Menu . }}class="active"{{ end }}>
                 <a href="{{ .PageRef | relURL }}">{{ or (T .Identifier) .Name | safeHTML }}</a>
             </li>
             {{- end }}
@@ -20,7 +21,7 @@
                 <a href="{{ relLangURL "services" }}">{{ i18n "services" }}</a>
                 <ul>
                     {{- range site.Menus.services }}
-                    <li>
+                    <li {{ if $page.IsMenuCurrent .Menu . }}class="active"{{ end }}>
                         <a target="_blank" href="{{ .PageRef | relURL }}">{{ or (T .Identifier) .Name | safeHTML }}</a>
                     </li>
                     {{ end }}

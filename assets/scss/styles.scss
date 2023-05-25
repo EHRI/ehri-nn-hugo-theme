@@ -1,8 +1,50 @@
+/**
+ * EHRI National Node template site styling.
+ */
 
-@import "fonts.scss";
+@import "fonts";
 
 $fa-font-path: "../fonts";
 @import "fa/font-awesome";
+
+/**
+ * Minimal reset from Andy Bell@
+ * https://andy-bell.co.uk/a-modern-css-reset/
+ */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
 /**
  * Globals
@@ -42,7 +84,7 @@ $white: #FFF;
 $black: #46463D;
 
 // Breakpoints
-$max-width: 1742px;
+//$max-width: 1742px; // of design
 $breakpoint-tablet: 1024px;
 $breakpoint-phone: 576px;
 
@@ -69,18 +111,18 @@ $breakpoint-phone: 576px;
   --margin-page-v: max(1rem, min(3.1875rem, 5vw));
   --margin-page-h: max(1rem, 5vw);
 
-  --margin-section-v: 5rem;
+  --margin-section-v: max(2rem, min(5rem, 7vw));
   --margin-section-h: var(--margin-page-h);
 
-  --padding-page-content-v: 4rem;
+  --padding-page-content-v: max(2rem, min(6rem, 10vw));
   --padding-page-content-h: 18vw;
 }
 
 html {
-  // Dynamic font-size test
+  // Dynamic font-size test...
   //font-size: calc(15px + 0.190625vw);
+  font-size: Min(Max(1rem, 4vw), 22px);
   height: 100vh;
-  //background-color: var(--grey-mid);
   background-color: var(--white);
 }
 
@@ -93,7 +135,7 @@ body {
 body {
   font-family: var(--font-family-text);
   color: var(--black);
-  font-size: $font-size-base;
+  //font-size: $font-size-base;
   line-height: 1.8rem;
 
   display: flex;
@@ -282,7 +324,7 @@ blockquote {
   }
 
   body {
-    font-size: $font-size-sm;
+    //font-size: $font-size-sm;
     line-height: 1.25rem;
   }
 }
@@ -530,8 +572,8 @@ textarea {
 
 // region Home page sections
 .hero {
-  padding-top: unquote("min(6rem, 8vw)");
-  padding-bottom: unquote("min(10rem, 12vw)");
+  padding-top: Max(1rem, Min(6rem, 8vw));
+  padding-bottom: Max(1rem, Min(10rem, 12vw));
   margin-left: auto;
   margin-right: auto;
 
@@ -741,8 +783,8 @@ section,
 }
 
 .home.latest {
-  padding: 5rem 15%;
-  margin-bottom: 5rem;
+  padding: var(--margin-section-v) var(--margin-section-h);
+  margin-bottom: Min(var(--margin-section-v), 5rem);
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -792,9 +834,7 @@ section,
   .person-list {
     margin: 0 0 var(--margin-section-v) 0;
     padding: 0;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 2rem;
+    @include auto-grid(16rem, 2rem, $max-cols: 2);
     grid-row-gap: 6rem;
   }
   .person {
@@ -804,17 +844,11 @@ section,
       width: 16.25rem;
       height: 16.25rem;
       border-radius: 50%;
-      margin-bottom: 2rem;
+      margin-bottom: $space-xl;
     }
 
     .contact-card {
       margin-top: auto;
-    }
-  }
-
-  @media (max-width: $breakpoint-phone + 200px) {
-    .person-list {
-      grid-template-columns: repeat(1, 1fr);
     }
   }
 }
@@ -823,7 +857,7 @@ section,
 
 // region Contact page
 .contact-info {
-  @include auto-grid(calc(33% - 2rem), 4rem);
+  @include auto-grid(calc(33% - #{$space-xl}), 4rem);
   margin-bottom: var(--margin-section-v);
 
   .form {
@@ -844,7 +878,7 @@ section,
 
     .contact-card {
       display: grid;
-      grid-column-gap: 1rem;
+      grid-column-gap: $space-md;
       grid-template-rows: min-content auto;
       grid-template-columns: min-content auto;
       grid-template-areas: "img name" "img email";
@@ -1012,8 +1046,8 @@ header.main {
       margin-right: 0;
       text-transform: uppercase;
       position: absolute;
-      top: 1.5rem;
-      right: 1rem;
+      top: $space-lg;
+      right: $space-md;
 
       li {
         display: unset;
@@ -1141,7 +1175,7 @@ header.main {
         width: 0; // 0 size until toggle is clicked
         bottom: 0;
         overflow: hidden;
-        padding: calc(var(--margin-page-v) + 1rem) 0; // fudge!
+        padding: calc(var(--margin-page-v) + #{$space-md}) 0; // fudge!
 
         > ul {
           flex-direction: column;
