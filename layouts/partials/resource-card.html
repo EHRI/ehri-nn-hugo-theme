@@ -13,6 +13,6 @@
         <header><a href="{{ .url }}">{{ .name }}</a></header>
         <a class="resource-icon " href="{{ .url }}"><span class="material-symbols-outlined">{{ .icon }}</span></a>
         <p>{{ .about | markdownify }}</p>
-        <a class="button-primary" href="{{ .url }}"> {{ i18n "go_to" (dict "Name" .name) }}</a>
+        <a class="button-primary" href="{{ .url }}">{{ i18n "go_to" (dict "Name" .name) }}</a>
     </div>
 </div>
