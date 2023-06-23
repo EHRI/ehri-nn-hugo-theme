@@ -647,6 +647,7 @@ section,
   {
     aspect-ratio: 16 / 9;
     width: 100%;
+    border: 0;
   }
 
   @media (max-width: $breakpoint-phone) {
