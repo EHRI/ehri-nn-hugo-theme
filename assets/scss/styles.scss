@@ -1365,6 +1365,16 @@ footer {
       margin-bottom: $space-md;
     }
     grid-area: partners;
+
+    .partner-logos {
+      display: flex;
+      gap: $space-sm;
+    }
+
+    img {
+      height: 2rem;
+      width: auto;
+    }
   }
 
   .footer-copyright {

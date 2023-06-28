@@ -51,12 +51,20 @@
             {{ partial "social.html" }}
         </div>
 
+        {{ if site.Params.funders }}
         <div class="partners">
             <p>{{ i18n "partners_funders" }}</p>
             <div class="partner-logos">
-                <img src="{{ "images/eu-logo.svg" | relURL }}" alt="European Commission"/>
+                {{ range site.Params.funders }}
+                    {{ if .url }}
+                        <a href="{{ .url }}"><img src="{{ printf "images/%s" .logo | relURL }}" alt="{{ .name }}" title="{{ .name }}"/></a>
+                    {{ else }}
+                        <img src="{{ printf "images/%s" .logo | relURL }}" alt="{{ .name }}" title="{{ .name }}"/>
+                    {{ end }}
+                {{ end }}
             </div>
         </div>
+        {{ end }}
 
         <div class="footer-copyright">
             {{ replace .Site.Copyright "{year}" now.Year }}
