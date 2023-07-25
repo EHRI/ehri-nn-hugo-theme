@@ -1,0 +1,28 @@
+
+// A generic button
+.button {
+  border-radius: var(--input-border-radius);
+  border: 2px solid transparent;
+  padding: .75rem 1.25rem;
+  display: inline-block;
+  font-family: var(--font-family-headings);
+  font-weight: var(--font-weight-bold);
+  transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+}
+
+// An action button
+.button-primary {
+  @extend .button;
+  color: var(--wine-red);
+  border: 2px solid var(--wine-red);
+  white-space: nowrap;
+  background-color: transparent;
+  font-size: $font-size-md;
+  line-height: 1.35rem;
+  background-image: none;
+
+  &:hover {
+    border-color: var(--beige);
+    background-color: var(--beige);
+  }
+}
