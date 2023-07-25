@@ -1,0 +1,266 @@
+
+
+// Textured background to any component
+.paper {
+  background-image: url(../images/doc-paper-bgd-yellow.jpg);
+}
+
+// A generic button
+.button {
+  border-radius: var(--input-border-radius);
+  border: 2px solid transparent;
+  padding: .75rem 1.25rem;
+  display: inline-block;
+  font-family: var(--font-family-headings);
+  font-weight: var(--font-weight-bold);
+  transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+}
+
+// An action button
+.button-primary {
+  @extend .button;
+  color: var(--wine-red);
+  border: 2px solid var(--wine-red);
+  white-space: nowrap;
+  background-color: transparent;
+  font-size: $font-size-md;
+  line-height: 1.35rem;
+  background-image: none;
+
+  &:hover {
+    border-color: var(--beige);
+    background-color: var(--beige);
+  }
+}
+
+// A figure with the caption on the side
+.fig-side {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+
+// Grid of resources...
+.resource-cards {
+  @include auto-grid(24rem, 4rem, $max-cols: 3);
+
+  margin: 3rem 0;
+  padding: 0;
+}
+
+// A single resource 'card'
+.resource-card {
+  @include card();
+  display: grid;
+  grid-template-rows: 12rem 1.25fr;
+  height: 100%;
+
+  .resource-img {
+    overflow: hidden;
+    img {
+      border-top-left-radius: var(--card-border-radius);
+      border-top-right-radius: var(--card-border-radius);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .resource-info {
+    padding: 2 * $space-lg;
+    display: grid;
+    align-items: start;
+    grid-template-columns: auto min-content;
+    header {
+      font-size: $font-size-xl;
+      line-height: 2rem; // larger than spec
+      font-family: var(--font-family-headings);
+      font-weight: var(--font-weight-bolder);
+      grid-area: 1 / 1 / 2 / 2;
+    }
+    .resource-icon {
+      grid-column: 2;
+      grid-row: 1;
+      font-size: $font-size-title;
+      line-height: 2rem;
+      justify-self: end;
+    }
+    p {
+      grid-area: 2 / 1 / 2 / 3;
+      // FIXME: line height?
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* number of lines to show */
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+
+    a.button-primary {
+      grid-area: 3 / 1 / 3 / 3;
+      margin-top: auto;
+      align-self: start;
+      justify-self: start;
+    }
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    .resource-info {
+      padding: $space-lg;
+    }
+  }
+}
+
+// On narrow widths, turn resource cards into
+// a single-line list
+//@media (max-width: $breakpoint-phone) {
+//  .resource-cards {
+//    margin: 0;
+//    grid-gap: 2px;
+//
+//    .resource-card {
+//      height: min-content;
+//      grid-template-rows: unset;
+//      border-radius: 0;
+//      .resource-img {
+//        display: none;
+//      }
+//      .resource-info {
+//        width: max-content;
+//        p {
+//          display: none;
+//        }
+//        .button-primary {
+//          display: none;
+//        }
+//      }
+//    }
+//    .resource-card:first-child {
+//      border-top-right-radius: var(--card-border-radius);
+//      border-top-left-radius: var(--card-border-radius);
+//    }
+//    .resource-card:last-child {
+//      border-bottom-left-radius: var(--card-border-radius);
+//      border-bottom-right-radius: var(--card-border-radius);
+//    }
+//  }
+//}
+
+// A grid of partner cards
+.partner-cards {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-gap: $space-lg;
+  margin: 3rem 0;
+}
+
+
+.partner-card {
+  @include card();
+  padding: $space-xl;
+  display: grid;
+  grid-template-areas: "header logo" "info info";
+  grid-template-columns: 1fr min-content;
+  .logo {
+    grid-area: logo;
+    width: 16rem;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+  header {
+    grid-area: header;
+    h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+  }
+  .button-primary {
+    // Allow button text to wrap if necessary
+    white-space: unset;
+  }
+  .info {
+    grid-area: info;
+  }
+  @media (max-width: $breakpoint-tablet) {
+    grid-template-areas: "logo" "header" "info";
+  }
+  @media (max-width: $breakpoint-phone) {
+    .logo {
+      width: 100%;
+    }
+  }
+}
+
+// A grid of latest news cards cards
+.latest-cards {
+  display: grid;
+  @include auto-grid(21rem, 3rem, 3);
+  margin: 0;
+  // FIXME: arbitrary hack to give more top padding
+  padding: 1rem 0 0;
+
+  li {
+    list-style: none;
+  }
+  li.twitter {
+    row-span: 2;
+    max-height: 300px;
+  }
+}
+
+// A single latest news card
+.latest-card {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  header {
+    font-family: var(--font-family-headings);
+    font-size: $font-size-xl;
+    line-height: 2rem;
+    font-weight: var(--font-weight-bolder);
+    margin-bottom: .5rem;
+  }
+
+  a.button-primary {
+    align-self: start;
+  }
+}
+
+// Contact card
+.contact-card {
+  font-family: var(--font-family-headings);
+  font-weight: var(--font-weight-bold);
+  padding-top: $space-lg;
+
+  header,
+  header a
+  {
+    font-size: $font-size-lg;
+    font-weight: var(--font-weight-bolder);
+  }
+  a {
+    display: block;
+    font-size: $font-size-sm;
+    font-weight: var(--font-weight-reg);
+  }
+}
+
+// Small row of social media buttons
+.follow-buttons {
+  display: grid;
+  grid-template-columns: min-content min-content;
+  grid-gap: $space-md;
+  width: min-content;
+}
+
+// Footnote body
+.footnotes {
+  font-family: var(--font-family-headings);
+  ol {
+    margin-top: 3rem;
+    padding-left: 1rem;
+  }
+  a,
+  a:hover
+  {
+    background-image: none;
+  }
+}
