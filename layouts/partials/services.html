@@ -1,4 +1,4 @@
-{{ $key := printf "services_%s" .Language }}
+{{ $key := printf "services.%s" .Language }}
 {{ $data := index site.Data $key }}
 {{ if $data }}
 <div class="resource-cards">

@@ -1,4 +1,4 @@
-{{ $key := printf "people_%s" .Language }}
+{{ $key := printf "people.%s" .Language }}
 {{ $data := index site.Data $key }}
 {{ if $data }}
 <section class="people paper page-content">

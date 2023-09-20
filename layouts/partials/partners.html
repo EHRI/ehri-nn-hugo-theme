@@ -1,4 +1,4 @@
-{{ $key := printf "partners_%s" .Language }}
+{{ $key := printf "partners.%s" .Language }}
 {{ $data := index site.Data $key }}
 {{ if $data }}
 <div class="partner-cards">

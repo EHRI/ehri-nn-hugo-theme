@@ -35,7 +35,7 @@
             </div>
             {{ end }}
             <div class="contacts">
-                {{ $key := printf "people_%s" .Language }}
+                {{ $key := printf "people.%s" .Language }}
                 {{ $data := index site.Data $key }}
                 {{ if $data }}
                     <h2>{{ i18n "contact_coordinators" (dict "Title" .Site.Params.TitleShort) }}</h2>

@@ -1,4 +1,4 @@
-{{ $key := printf "latest_%s" .Language }}
+{{ $key := printf "latest.%s" .Language }}
 {{ $data := index site.Data $key }}
 {{ if $data }}
 <ul class="latest-cards">
