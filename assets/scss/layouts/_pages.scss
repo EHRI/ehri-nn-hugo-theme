@@ -11,8 +11,6 @@ main {
       background-position: bottom;
       background-repeat: no-repeat;
       background-size: 100% 0;
-      padding-left: .25rem;
-      padding-right: .25rem;
       transition-duration: 0.2s;
       transition-property: background-color background-size color;
 
@@ -123,6 +121,9 @@ section.home.hero {
 section.home,
 .page-content
 {
+  // Modern clearfix: prevent floats clearing box
+  display: flow-root;
+
   // Desktop (wide) padding is dynamic based on page width
   padding: var(--padding-page-content-v) var(--padding-page-content-h);
 
