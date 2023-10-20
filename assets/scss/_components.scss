@@ -35,10 +35,9 @@
 
 // A figure with the caption on the side
 .fig-side {
-  //display: grid;
-  //grid-template-columns: 2fr 1fr;
   display: flex;
   flex-direction: row;
+  flex-flow: row wrap;
   img {
     flex: 2;
   }
@@ -47,6 +46,37 @@
   }
 }
 
+.fig-float {
+  float: left;
+  margin: 0 1rem 1rem 0;
+  width: calc(50% - .5rem);
+}
+
+.fig-right {
+  float: right;
+  margin: 0 0 1rem 1rem;
+}
+
+@media (max-width: $breakpoint-phone) {
+  .fig-float,
+  .fig-right
+  {
+    float: none;
+    margin: 0 0 1rem 0;
+    width: 100%;
+  }
+}
+
+// Traditional clearfix, to clear floats
+.clearfix:before,
+.clearfix:after {
+  content: " "; /* 1 */
+  display: table; /* 2 */
+}
+
+.clearfix:after {
+  clear: both;
+}
 
 // Grid of resources...
 .resource-cards {
