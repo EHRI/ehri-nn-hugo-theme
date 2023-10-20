@@ -35,8 +35,16 @@
 
 // A figure with the caption on the side
 .fig-side {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
+  //display: grid;
+  //grid-template-columns: 2fr 1fr;
+  display: flex;
+  flex-direction: row;
+  img {
+    flex: 2;
+  }
+  figcaption {
+    flex: 1;
+  }
 }
 
 
