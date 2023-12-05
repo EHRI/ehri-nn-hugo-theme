@@ -10,9 +10,9 @@
             {{ $currentLang := .Site.Language.Lang }}
             {{ range .Page.AllTranslations }}
                 {{ if eq .Lang $currentLang }}
-                    <li><a title="{{ .Language.LanguageName }}" href="{{ .Permalink }}">{{ .Language.LanguageCode }}</a></li>
+                    <li><a title="{{ .Language.LanguageName }}" href="{{ .Permalink }}">{{ .Lang }}</a></li>
                 {{ else }}
-                    <li class="active"><a title="{{ .Language.LanguageName }}" href="{{ .Permalink }}">{{ .Language.LanguageCode }}</a></li>
+                    <li class="active"><a title="{{ .Language.LanguageName }}" href="{{ .Permalink }}">{{ .Lang }}</a></li>
                 {{ end }}
             {{ end }}
         </ul>
