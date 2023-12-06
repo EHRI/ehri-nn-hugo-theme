@@ -344,6 +344,10 @@
   a.button-primary {
     align-self: start;
   }
+  .read-more {
+    @include content-nav-link();
+    color: var(--wine-red);
+  }
 }
 
 // Contact card
