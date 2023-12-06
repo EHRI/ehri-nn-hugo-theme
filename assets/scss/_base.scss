@@ -52,6 +52,12 @@ body {
 
   --input-border-radius: 5px;
   --card-border-radius: 10px;
+  --font-size-base: #{$font-size-base};
+  --font-size-xs: #{$font-size-xs};
+  --font-size-sm: #{$font-size-sm};
+  --font-size-md: #{$font-size-md};
+  --font-size-lg: #{$font-size-lg};
+  --font-size-xl: #{$font-size-xl};
   --font-family-headings: #{$headings-font-family};
   --font-family-text: #{$font-family-base};
   --font-weight-reg: #{$font-weight-reg};

@@ -42,6 +42,17 @@ section.home,
   }
 }
 
+.list-content {
+  > ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  > ul > li {
+    margin-bottom: 1rem;
+    list-style-type: none;
+  }
+}
+
 section.home.video {
   display: flex;
   align-items: center;

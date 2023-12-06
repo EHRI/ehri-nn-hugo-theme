@@ -1,0 +1,34 @@
+<div class="page-summary">
+    <div class="page-summary-content">
+        <header>
+            <a href="{{ .RelPermalink }}">
+                {{ .Title }}
+            </a>
+        </header>
+
+        {{ $pageLink := .RelPermalink }}
+        {{ with .Resources.GetMatch .Params.Image }}
+            <a href="{{ $pageLink }}">
+                <picture class="news-image">
+                    {{ with .Resize (printf "%dx%d jpeg" .Width .Height) }}
+                    <source srcset="{{ .RelPermalink }}" type="image/jpeg">
+                    {{ end }}
+                    {{ with .Resize (printf "%dx%d webp" .Width .Height) }}
+                    <source srcset="{{ .RelPermalink }}" type="image/webp">
+                    {{ end }}
+                    <img src="{{ .RelPermalink }}" alt="{{ .Title }}">
+                </picture>
+            </a>
+        {{ end }}
+
+        {{ $dateShort := .PublishDate | time.Format "02/01/2006" }}
+        {{ $dateLong := .PublishDate | time.Format ":date_long" }}
+        <time class="news-date" datetime="{{ $dateShort }}">
+            {{ $dateLong }}
+        </time>
+
+        {{ .Summary }}
+    </div>
+
+    <a class="read-more" href="{{ .RelPermalink }}">{{ i18n "read_more" }}</a>
+</div>

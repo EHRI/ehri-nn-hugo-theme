@@ -23,11 +23,17 @@ main {
   }
 
   // Intro text is larger than normal
-  p.intro {
-    font-size: $font-size-xl;
+  div.intro,
+  div.intro > p
+  {
+    font-size: $font-size-lg;
     line-height: 2.25rem;
     font-weight: var(--font-weight-bold);
     font-family: var(--font-family-headings);
+  }
+
+  .intro.intro-large {
+    font-size: $font-size-xl;
   }
 
   // Standard text lists have a non-standard bullet

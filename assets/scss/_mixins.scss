@@ -23,4 +23,15 @@
   }
 }
 
+@mixin content-nav-link() {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  margin-top: $space-sm;
+  font-family: var(--font-family-headings);
+  text-decoration: none;
 
+  &:hover {
+    color: var(--wine-red);
+    text-decoration: underline;
+  }
+}

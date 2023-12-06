@@ -1,0 +1,25 @@
+
+.news.page-content {
+
+  picture.news-image img {
+    display: block;
+    max-width: 100%;
+    width: Max(400px, 33vw);
+    height: auto;
+    // the following pulls the news image to the right
+    // outside of its containing box and allows text
+    // to flow around it
+    margin: 0 calc(calc(-1 * var(--padding-page-content-h) + var(--margin-page-h))) 1rem 1rem;
+    float: right;
+
+    @media (max-width: $breakpoint-phone) {
+      margin: 0 0 1rem 0;
+      width: 100%;
+    }
+  }
+
+  a.permalink {
+    color: inherit;
+    text-decoration: none;
+  }
+}

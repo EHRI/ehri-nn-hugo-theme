@@ -2,15 +2,16 @@
     {{ $url := printf "images/%s" .image }}
     {{ $imgpath := printf "static/%s" $url }}
     {{ if fileExists $imgpath }}
-        <img class="logo" src="{{ $url | relURL }}" alt="{{ .name }} image" />
+        <img class="logo" src="{{ $url | relURL }}" alt="{{ .title }} image" />
     {{ else }}
         {{ $url := "images/cards-still-1.png" }}
-        <img class="logo" src="{{ $url | relURL }}" alt="{{ .name }} image" />
+        <img class="logo" src="{{ $url | relURL }}" alt="{{ .title }} image" />
     {{ end }}
     <header>
-        <h3><a href="{{ .url }}">{{ .name }}</a></h3></header>
+        <h3><a href="{{ .url }}">{{ .title }}</a></h3>
+    </header>
     <div class="info">
-        {{ .about | markdownify }}
-        <a class="button-primary" target="_blank" href="{{ .url }}">{{ i18n "go_to" (dict "Name" .name) }}</a>
+        {{ .content | markdownify }}
+        <a class="button-primary" target="_blank" href="{{ .url }}">{{ i18n "go_to" (dict "Title" .title) }}</a>
     </div>
 </div>

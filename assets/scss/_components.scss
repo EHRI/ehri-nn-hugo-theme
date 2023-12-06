@@ -33,6 +33,31 @@
   }
 }
 
+.breadcrumb {
+  @include content-nav-link();
+
+  // Use same padding as header/footer
+  padding: 0 var(--margin-page-h);
+
+  > ol {
+    margin: 0;
+    padding: 0;
+  }
+  > ol > li {
+    display: inline-block;
+    margin-right: $space-sm;
+    &:after {
+      content: "/";
+      margin-left: $space-sm;
+    }
+    &:last-child {
+      &:after {
+        content: "";
+      }
+    }
+  }
+}
+
 // A figure with the caption on the side
 .fig-side {
   display: flex;
@@ -78,6 +103,65 @@
   clear: both;
 }
 
+// Date line on posts/news items
+.news-date {
+  display: block;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bolder);
+  margin-bottom: $space-md;
+}
+
+// Page summary lists
+.page-summaries {
+  padding: $space-lg 0;
+}
+
+// A page summary in a single list
+.page-summary {
+  margin-bottom: $space-xl;
+  border-bottom: 1px dashed var(--grey-mid);
+  display: flow-root; // box expands around floating images
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .page-summary-content {
+    display: flow-root; // box expands around floating images
+    clear: both;
+  }
+
+  header {
+    font-family: var(--font-family-headings);
+    font-size: $font-size-xl;
+    line-height: 2rem;
+    font-weight: var(--font-weight-bolder);
+    margin-bottom: $space-lg;
+  }
+
+  .read-more {
+    @include content-nav-link();
+    float: right;
+  }
+
+  picture.news-image img {
+    display: block;
+    max-width: 100%;
+    width: 16rem;
+    height: auto;
+    // the following pulls the news image to the right
+    // outside of its containing box and allows text
+    // to flow around it
+    //margin: 0 1rem 1rem calc(calc(-1 * var(--padding-page-content-h) + var(--margin-page-h)));
+    margin: 0 1rem 1rem 0;
+    float: left;
+
+    @media (max-width: $breakpoint-phone) {
+      margin: 0 0 1rem 0;
+      width: 100%;
+    }
+  }
+}
 // Grid of resources...
 .resource-cards {
   @include auto-grid(24rem, 4rem, $max-cols: 3);
