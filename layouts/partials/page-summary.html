@@ -9,15 +9,7 @@
         {{ $pageLink := .RelPermalink }}
         {{ with .Resources.GetMatch .Params.Image }}
             <a href="{{ $pageLink }}">
-                <picture class="news-image">
-                    {{ with .Resize (printf "%dx%d jpeg" .Width .Height) }}
-                    <source srcset="{{ .RelPermalink }}" type="image/jpeg">
-                    {{ end }}
-                    {{ with .Resize (printf "%dx%d webp" .Width .Height) }}
-                    <source srcset="{{ .RelPermalink }}" type="image/webp">
-                    {{ end }}
-                    <img src="{{ .RelPermalink }}" alt="{{ .Title }}">
-                </picture>
+                {{ partial "featured-image.html" . }}
             </a>
         {{ end }}
 

@@ -6,15 +6,7 @@
         <h1>{{ .Title }}</h1>
 
         {{ with .Resources.GetMatch .Params.Image }}
-        <picture class="news-image">
-            {{ with .Resize (printf "%dx%d jpeg" .Width .Height) }}
-            <source srcset="{{ .RelPermalink }}" type="image/jpeg">
-            {{ end }}
-            {{ with .Resize (printf "%dx%d webp" .Width .Height) }}
-            <source srcset="{{ .RelPermalink }}" type="image/webp">
-            {{ end }}
-            <img src="{{ .RelPermalink }}" alt="{{ .Title }}">
-        </picture>
+            {{ partial "featured-image.html" . }}
         {{ end }}
 
         {{ $dateShort := .PublishDate | time.Format "02/01/2006" }}

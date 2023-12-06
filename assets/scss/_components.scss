@@ -144,7 +144,7 @@
     float: right;
   }
 
-  picture.news-image img {
+  .featured-image img {
     display: block;
     max-width: 100%;
     width: 16rem;
@@ -153,11 +153,11 @@
     // outside of its containing box and allows text
     // to flow around it
     //margin: 0 1rem 1rem calc(calc(-1 * var(--padding-page-content-h) + var(--margin-page-h)));
-    margin: 0 1rem 1rem 0;
+    margin: 0 $space-md $space-md 0;
     float: left;
 
     @media (max-width: $breakpoint-phone) {
-      margin: 0 0 1rem 0;
+      margin: 0 0 $space-md 0;
       width: 100%;
     }
   }
