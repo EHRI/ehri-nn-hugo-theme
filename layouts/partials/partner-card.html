@@ -12,6 +12,6 @@
     </header>
     <div class="info">
         {{ .content | markdownify }}
-        <a class="button-primary" target="_blank" href="{{ .url }}">{{ i18n "go_to" (dict "Title" .title) }}</a>
+        <a class="button-primary" target="_blank" href="{{ .url }}">{{ i18n "go_to" (dict "Name" .title) }}</a>
     </div>
 </div>
