@@ -26,12 +26,12 @@
 
         <div class="navbar">
             <ul class="text-items">
-                {{ $page := . }}
-                {{ range site.Menus.main }}
+                {{- $page := . -}}
+                {{- range site.Menus.main -}}
                     <li {{ if $page.IsMenuCurrent .Menu . }}class="active"{{ end }}>
-                        <a href="{{ .PageRef | relLangURL }}">{{ or (T .Identifier) .Name | safeHTML }}</a>
+                        <a href="{{ .PageRef | relLangURL }}">{{ or (or (T .Identifier) .Name) .Identifier | safeHTML }}</a>
                     </li>
-                {{ end }}
+                {{- end -}}
             </ul>
             <div class="social">
                 {{ partial "social.html" }}
