@@ -2,7 +2,7 @@
 
     {{ partial "breadcrumbs" . }}
 
-    <section class="page-content news {{ path.BaseName . }}">
+    <section class="page-content news">
         <h1>{{ .Title }}</h1>
 
         {{ with .Resources.GetMatch .Params.Image }}
