@@ -278,17 +278,14 @@
 .partner-card {
   @include card();
   padding: $space-xl;
-  display: grid;
-  grid-template-areas: "header logo" "info info";
   grid-template-columns: 1fr min-content;
   .logo {
-    grid-area: logo;
-    width: 16rem;
+    max-width: 16rem;
     height: auto;
-    margin-bottom: 1rem;
+    margin: 0 0 $space-md $space-md;
+    float: right;
   }
   header {
-    grid-area: header;
     h3 {
       margin-top: 0;
       margin-bottom: 1rem;
@@ -301,12 +298,12 @@
   .info {
     grid-area: info;
   }
-  @media (max-width: $breakpoint-tablet) {
-    grid-template-areas: "logo" "header" "info";
-  }
   @media (max-width: $breakpoint-phone) {
     .logo {
+      float: unset;
       width: 100%;
+      max-width: 100%;
+      margin: 0 0 $space-md 0;
     }
   }
 }
