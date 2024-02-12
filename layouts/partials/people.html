@@ -4,16 +4,16 @@
 <section class="people paper page-content">
     <div class="person-list">
         {{ range $data }}
-            <div class="person">
+            <div class="person" id="person-{{ .id }}">
                 {{ $url := printf "images/%s" .image }}
                 {{ $imgpath := printf "static/%s" $url }}
                 {{ if fileExists $imgpath }}
                     <img class="person-image" src="{{ $url | relURL }}" alt="{{ .name }} image" />
                 {{ end }}
                 <h2 class="person-name">{{ .name }}</h2>
-                <p class="person-about">
-                    {{ .about | markdownify }}
-                </p>
+                <div class="person-about">
+                    {{ .about | page.RenderString (dict "display" "block") }}
+                </div>
                 {{ if .email }}
                 <div class="contact-card">
                     <header class="contact-name"><a href="mailto:{{ .email }}">{{ .name }}</a></header>
