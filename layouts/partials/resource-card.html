@@ -1,4 +1,4 @@
-<div class="resource-card">
+<div class="resource-card" id="resource-{{ .id }}">
     <div class="resource-img">
         {{ $url := printf "images/%s" .image }}
         {{ $imgpath := printf "static/%s" $url }}
@@ -12,7 +12,9 @@
     <div class="resource-info">
         <header><a href="{{ .url }}">{{ .title }}</a></header>
         <a class="resource-icon " href="{{ .url }}"><span class="material-symbols-outlined">{{ .icon }}</span></a>
-        <p>{{ .content | markdownify }}</p>
+        <div class="resource-description">
+            {{ .content | page.RenderString (dict "display" "block") }}
+        </div>
         <a class="button-primary" href="{{ .url }}">{{ i18n "go_to" (dict "Name" .title) }}</a>
     </div>
 </div>
