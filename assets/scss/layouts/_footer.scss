@@ -139,7 +139,7 @@
 
   @media (max-width: $breakpoint-phone) {
     .footer-content {
-      grid-template-areas: "headings" "menu1" "menu2" "menu3" "social" "partners";
+      grid-template-areas: "headings" "menu1" "menu2" "menu3" "social" "partners" "copyright";
 
       .logo img {
         width: 69px;
@@ -167,8 +167,11 @@
     .contact-card {
       display: block;
     }
+    .partners {
+      margin-bottom: $space-xl;
+    }
     .footer-copyright {
-      display: none;
+      text-align: start;
     }
   }
 }

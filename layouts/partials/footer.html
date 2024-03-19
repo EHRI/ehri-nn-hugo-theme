@@ -1,73 +1,17 @@
 <footer class="main footer">
     <div class="footer-content">
-        {{ $page := .}}
-        <div class="footer-headings">
-            <div class="logo">
-                <a href="{{ relLangURL "" }}"><img src="{{ "images/ehri-logo-beige.svg" | relURL }}" alt="EHRI Logo"/></a>
-            </div>
-            <a href="{{ relLangURL "" }}" class="title">{{ .Site.Title }}</a>
-        </div>
+        {{ partial "footer-headings.html" . }}
 
-        <ul class="menu-1">
-            {{- range site.Menus.footer }}
-            <li {{ if $page.IsMenuCurrent .Menu . }}class="active"{{ end }}>
-                <a href="{{ .PageRef | relURL }}">{{ or (T .Identifier) .Name | safeHTML }}</a>
-            </li>
-            {{- end }}
-        </ul>
+        {{ partial "footer-menu-1.html" .}}
 
-        <ul class="menu-2">
-            <li>
-                <a href="{{ relLangURL "services" }}">{{ i18n "services" }}</a>
-                <ul>
-                    {{- range site.Menus.services }}
-                    <li {{ if $page.IsMenuCurrent .Menu . }}class="active"{{ end }}>
-                        <a target="_blank" href="{{ .PageRef | relURL }}">{{ or (T .Identifier) .Name | safeHTML }}</a>
-                    </li>
-                    {{ end }}
-                </ul>
-            </li>
-        </ul>
+        {{ partial "footer-menu-2.html" . }}
 
-        <ul class="menu-3">
-            <li>
-                <a href="{{ relLangURL "contact" }}">{{ i18n "contact" }}</a>
-                <div class="contact-card">
-                    <header>
-                        <a href="mailto:{{ site.Params.contactEmail }}">
-                            {{ site.Params.contactName }}
-                        </a>
-                    </header>
-                    <a href="mailto:{{ site.Params.contactEmail }}">
-                        <i class="fa fa-fw fa-envelope-o"></i>
-                        {{ site.Params.contactEmail }}
-                    </a>
-                </div>
-            </li>
+        {{ partial "footer-menu-3.html" . }}
 
-        </ul>
+        {{ partial "social.html" . }}
 
-        <div class="social">
-            {{ partial "social.html" }}
-        </div>
+        {{ partial "footer-funders.html" . }}
 
-        {{ if site.Params.funders }}
-        <div class="partners">
-            <p>{{ i18n "partners_funders" }}</p>
-            <div class="partner-logos">
-                {{ range site.Params.funders }}
-                    {{ if .url }}
-                        <a href="{{ .url }}"><img src="{{ printf "images/%s" .logo | relURL }}" alt="{{ .name }}" title="{{ .name }}"/></a>
-                    {{ else }}
-                        <img src="{{ printf "images/%s" .logo | relURL }}" alt="{{ .name }}" title="{{ .name }}"/>
-                    {{ end }}
-                {{ end }}
-            </div>
-        </div>
-        {{ end }}
-
-        <div class="footer-copyright">
-            {{ replace .Site.Copyright "{year}" now.Year }}
-        </div>
+        {{ partial "footer-copyright.html" . }}
     </div>
 </footer>
