@@ -15,6 +15,15 @@
         <div class="resource-description">
             {{ .content | page.RenderString (dict "display" "block") }}
         </div>
-        <a class="button-primary" href="{{ .url }}">{{ i18n "go_to" (dict "Name" .title) }}</a>
+        <footer class="links">
+            {{ if .url }}
+                <a class="button-primary" href="{{ .url }}">{{ i18n "go_to" (dict "Name" .title) }}</a>
+            {{ end }}
+            {{ if .links }}
+                {{ range .links }}
+                    <a class="button-primary" href="{{ .url }}">{{ .title }}</a>
+                {{ end }}
+            {{ end }}
+        </footer>
     </div>
 </div>
