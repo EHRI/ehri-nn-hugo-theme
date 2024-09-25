@@ -190,7 +190,7 @@
   .resource-info {
     padding: 2 * $space-lg;
     display: grid;
-    align-items: start;
+    align-content: start;
     grid-template-columns: auto min-content;
     header {
       font-size: $font-size-xl;
