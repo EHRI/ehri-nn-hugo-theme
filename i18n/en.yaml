@@ -82,3 +82,28 @@ contact_thanks:
 
 contact_back:
   other: Go back to the form
+
+# Social media
+social_media:
+  other: Social Media
+
+social_follow_us:
+  other: Follow us on social media
+
+social_facebook:
+  other: Facebook
+
+social_facebook_follow:
+  other: Follow us on Facebook
+
+social_x:
+  other: X (formerly Twitter)
+
+social_x_follow:
+  other: Follow us on X (formerly Twitter)
+
+social_linkedin:
+  other: LinkedIn
+
+social_linkedin_follow:
+  other: Follow us on LinkedIn
