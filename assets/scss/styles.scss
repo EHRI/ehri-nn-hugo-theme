@@ -5,7 +5,6 @@
 @import "variables";
 @import "mixins";
 @import "fonts";
-@import "fa/font-awesome";
 @import "base";
 @import "components";
 @import "layouts/header";
@@ -16,3 +15,10 @@
 @import "layouts/contact";
 @import "layouts/services";
 @import "layouts/news";
+
+// Font Awesome 6, with 4 shim
+@import "fa/fontawesome";
+@import "fa/regular";
+@import "fa/solid";
+@import "fa/brands";
+@import "fa/v4-shims";
