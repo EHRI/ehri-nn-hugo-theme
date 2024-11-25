@@ -1,0 +1,37 @@
+@import "../variables";
+@import "../mixins";
+
+// A figure with the caption on the side
+.fig-side {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+  img {
+    flex: 2;
+  }
+  figcaption {
+    flex: 1;
+  }
+}
+
+.fig-float,
+.fig-right
+{
+  float: none;
+  margin: 0 0 1rem 0;
+  width: 100%;
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .fig-float {
+    float: left;
+    margin: 0 1rem 1rem 0;
+    width: calc(50% - .5rem);
+  }
+
+  .fig-right {
+    float: right;
+    margin: 0 0 1rem 1rem;
+  }
+}
+

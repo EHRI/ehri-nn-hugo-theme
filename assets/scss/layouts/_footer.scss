@@ -1,3 +1,4 @@
+@import "../variables";
 
 /**
  * Responsive footer.
@@ -9,169 +10,188 @@
   background-color: var(--grey-dark);
   color: var(--beige);
   font-family: var(--font-family-headings);
-  font-size: $font-size-md;
+  font-size: var(--font-size-md);
   font-weight: var(--font-weight-reg);
   line-height: 24px;
 
   a {
     color: inherit;
   }
+}
 
-  .logo {
-    margin-bottom: 2 * $space-lg;
+.footer-content {
+  display: grid;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-gap: 0 1rem;
+
+  // At mobile width, the grid is a single column
+  grid-template-areas:
+      "headings"
+      "menu1"
+      "menu2"
+      "menu3"
+      "social"
+      "partners"
+      "copyright";
+
+  // At tablet width, the grid changes to a 4-column layout
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-areas:
+        "headings menu1 menu2 social"
+        ". menu3 menu2 . "
+        "partners partners copyright copyright";
+    grid-gap: 0 4rem;
+  }
+
+  // At laptop width, the grid changes to a 5-column layout
+  @media (min-width: $breakpoint-laptop) {
+    grid-template-areas: "headings menu1 menu2 menu3 social" ". partners partners . ." ". . . copyright copyright";
+    grid-gap: 3rem 4rem;
+  }
+}
+
+.footer-headings {
+  display: flex;
+  grid-area: headings;
+
+  @media (min-width: $breakpoint-tablet) {
+    display: block;
   }
 
   .title {
     display: block;
-    font-size: $font-size-lg;
+    width: max-content;
+    margin-left: $space-lg;
+    font-size: var(--font-size-lg);
     white-space: break-spaces;
     line-height: 2.125rem;
-    width: min-content;
+
+    @media (min-width: $breakpoint-tablet) {
+      width: min-content;
+      margin-left: 0;
+    }
   }
 
-  a {
-    color: var(--beige);
-    text-decoration: none;
+  .logo {
+    margin-bottom: $space-lg;
+
+    @media (min-width: $breakpoint-laptop) {
+      margin-bottom: 2 * $space-lg;
+    }
   }
 
-  .footer-content {
-    display: grid;
-    grid-auto-columns: minmax(0, 1fr);
-    grid-template-areas: "headings menu1 menu2 menu3 social" ". partners partners . ." ". . . copyright copyright";
-    grid-gap: 3rem 4rem;
+  .logo img {
+    width: 69px;
 
-    ul {
-      margin: 0;
-      padding: 0;
-      li {
-        list-style: none;
-        padding: $space-lg 0;
-        font-weight: var(--font-weight-bolder);
-      }
+    @media (min-width: $breakpoint-tablet) {
+      width: 117px;
     }
 
-    ul > li > ul {
-      margin-top: $space-sm;
+    @media (min-width: $breakpoint-laptop) {
+      width: unset;
     }
+  }
+}
 
-    ul > li > ul > li {
-      font-size: $font-size-md;
+// Styling that applies to all menus
+.footer-menu {
+  margin: 0;
+  padding: 0;
+
+  .footer-menu-item {
+    list-style: none;
+    padding: $space-md 0;
+    font-weight: var(--font-weight-bolder);
+
+    @media (min-width: $breakpoint-tablet) {
+      padding: $space-lg 0;
+    }
+  }
+
+  > .footer-menu-item > .footer-submenu {
+    padding-left: $space-md;
+    margin-top: $space-sm;
+
+    > .footer-submenu-item {
       font-weight: var(--font-weight-reg);
       padding: $space-sm 0;
+
+    }
+
+    @media (min-width: $breakpoint-tablet) {
+      padding-left: unset;
     }
   }
+}
 
-  .footer-headings {
-    grid-area: headings;
+.footer-content .menu-1 {
+  grid-area: menu1;
+}
+
+.footer-content .menu-2 {
+  grid-area: menu2;
+}
+
+.footer-content .menu-3 {
+  grid-area: menu3;
+}
+
+.footer-menu .contact-card {
+  @media (min-width: $breakpoint-tablet) {
+    // FIXME: this was hidden in the design and makes things easier,
+    // but probably should not be hidden in the final version
+    display: none;
   }
-  .menu-1 {
-    grid-area: menu1;
+
+  @media (min-width: $breakpoint-laptop) {
+    display: block;
   }
-  .menu-2 {
-    grid-area: menu2;
-  }
-  .menu-3 {
-    grid-area: menu3;
-  }
-  .social {
-    grid-area: social;
+}
+
+.footer-content .social {
+  grid-area: social;
+  justify-self: start;
+  font-size: var(--font-size-base);
+  margin: $space-lg 0 $space-xl 0;
+
+  @media(min-width: $breakpoint-tablet) {
+    margin: 0;
     justify-self: center;
-    font-size: $font-size-base;
     padding-top: $space-lg;
   }
+}
 
-  .partners {
-    p {
-      margin-top: 0;
-      margin-bottom: $space-md;
-    }
-    grid-area: partners;
+.footer-content .partners {
+  grid-area: partners;
+  margin-bottom: $space-xl;
 
-    .partner-logos {
-      display: flex;
-      gap: $space-sm;
-    }
-
-    img {
-      height: 2rem;
-      width: auto;
-    }
+  @media (min-width: $breakpoint-tablet) {
+    margin-bottom: 0;
   }
 
-  .footer-copyright {
-    grid-area: copyright;
+  p {
+    margin-top: 0;
+    margin-bottom: $space-md;
+  }
+
+  .partner-logos {
+    display: flex;
+    gap: $space-sm;
+  }
+
+  img {
+    height: 2rem;
+    width: auto;
+  }
+}
+
+.footer-copyright {
+  grid-area: copyright;
+  text-align: start;
+  align-self: end;
+  font-size: var(--font-size-sm);
+
+  @media (min-width: $breakpoint-tablet) {
     text-align: end;
-    align-self: end;
-    font-size: $font-size-sm;
-  }
-
-  // Tablet adjustments
-  @media (max-width: $breakpoint-tablet) {
-    .footer-content {
-      grid-row-gap: 0;
-      grid-template-areas: "headings menu1 menu2 social" ". menu3 menu2 . " "partners partners copyright copyright";
-    }
-
-    .footer-headings {
-
-      .logo {
-        margin-bottom: $space-lg;
-      }
-      .logo img {
-        width: 117px;
-        height: auto;
-      }
-      .title {
-        font-size: $font-size-lg;
-      }
-
-      font-size: $font-size-md;
-    }
-
-    .contact-card {
-      display: none;
-    }
-
-    .partners {
-      font-size: $font-size-md;
-    }
-  }
-
-  @media (max-width: $breakpoint-phone) {
-    .footer-content {
-      grid-template-areas: "headings" "menu1" "menu2" "menu3" "social" "partners" "copyright";
-
-      .logo img {
-        width: 69px;
-      }
-      ul > li {
-        padding: $space-md;
-        padding-left: 0;
-      }
-
-      ul > li > ul {
-        padding-left: $space-md;
-      }
-    }
-    .footer-headings {
-      display: flex;
-      .title {
-        width: max-content;
-        margin-left: $space-lg;
-      }
-    }
-    .social {
-      justify-self: start;
-      margin-bottom: $space-xl;
-    }
-    .contact-card {
-      display: block;
-    }
-    .partners {
-      margin-bottom: $space-xl;
-    }
-    .footer-copyright {
-      text-align: start;
-    }
   }
 }

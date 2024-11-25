@@ -7,10 +7,10 @@
         {{ $url := "images/cards-still-1.png" }}
         <img class="logo" src="{{ $url | relURL }}" alt="{{ .title }} image" />
     {{ end }}
-    <header>
+    <header class="partner-card-header">
         <h3><a href="{{ .url }}">{{ .title }}</a></h3>
     </header>
-    <div class="info">
+    <div class="partner-card-info">
         {{ .content | page.RenderString (dict "display" "block")  }}
         <a class="button-primary" target="_blank" href="{{ .url }}">{{ i18n "go_to" (dict "Name" .title) }}</a>
     </div>

@@ -1,9 +1,9 @@
-<ul class="menu-3">
+<ul class="menu-3 footer-menu">
     {{ $page := .}}
-    <li>
+    <li class="footer-menu-item">
         <a href="{{ relLangURL "contact" }}">{{ i18n "contact" }}</a>
         <div class="contact-card">
-            <header>
+            <header class="contact-name">
                 <a href="mailto:{{ site.Params.contactEmail }}">
                     {{ site.Params.contactName }}
                 </a>

@@ -1,7 +1,7 @@
-<ul class="menu-1">
+<ul class="menu-1 footer-menu">
     {{ $page := .}}
     {{- range site.Menus.footer }}
-    <li {{ if $page.IsMenuCurrent .Menu . }}class="active"{{ end }}>
+    <li class="footer-menu-item{{ if $page.IsMenuCurrent .Menu . }} active{{ end }}">
         <a href="{{ .PageRef | relURL }}">{{ or (T .Identifier) .Name | safeHTML }}</a>
     </li>
     {{- end }}

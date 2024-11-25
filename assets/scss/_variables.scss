@@ -31,11 +31,14 @@ $purple: #3E274B;
 $grey-dark: #46463D;
 $grey-darker: #3B3B3B;
 $beige: #D5D2B8;
-$beige-light: linear-gradient(0deg, rgba(213, 210, 184, 0.2), rgba(213, 210, 184, 0.2)), #FFFFFF;
 $white: #FFF;
 $black: #46463D;
 
+// Backgrounds
+$beige-light: linear-gradient(0deg, rgba(213, 210, 184, 0.2), rgba(213, 210, 184, 0.2)), #FFFFFF;
+
 // Breakpoints
 //$max-width: 1742px; // of design
-$breakpoint-tablet: 1024px;
-$breakpoint-phone: 576px;
+$breakpoint-wide: 1440px;
+$breakpoint-laptop: 1024px;
+$breakpoint-tablet: 576px;
