@@ -8,7 +8,7 @@ description = "A test implementation of the EHRI National Node template website"
 homepage = "https://github.com/EHRI/ehri-nn-hugo-theme"
 tags = ["website", "template", "ehri"]
 features = []
-min_version = "0.111.3"
+min_version = "0.129.0"
 
 [author]
   name = "EHRI"

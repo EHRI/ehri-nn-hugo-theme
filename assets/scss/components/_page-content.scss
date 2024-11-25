@@ -1,7 +1,35 @@
-// Text and links within the main page content
-main {
+@import "../variables";
+
+// This section styles everything inside a page-content div, which is
+// typically markdown and this not styleable by the user.
+.page-content {
+
+  // Modern clearfix: prevent floats clearing box
+  display: flow-root;
+
+  // Standard padding is page margins
+  padding: var(--padding-page-content-v) var(--margin-page-h);
+
+  // On laptop width and above, use a wide content padding
+  @media (min-width: $breakpoint-laptop) {
+    padding: var(--padding-page-content-v) var(--padding-page-content-h);
+  }
+
+  h1,
+  h2
+  {
+    margin-top: 0;
+  }
+  h1:last-child,
+  h2:last-child
+  {
+    margin-bottom: 0;
+  }
+
   p {
     > a {
+      // Links inside paragraphs are styled differently to the default,
+      // and have an animated underline on hover
       color: var(--grey-darker);
       font-weight: bold;
       text-decoration: underline;
@@ -23,17 +51,17 @@ main {
   }
 
   // Intro text is larger than normal
-  div.intro,
-  div.intro > p
+  .intro,
+  .intro > p
   {
-    font-size: $font-size-lg;
+    font-size: var(--font-size-lg);
     line-height: 2.25rem;
     font-weight: var(--font-weight-bold);
     font-family: var(--font-family-headings);
   }
 
   .intro.intro-large {
-    font-size: $font-size-xl;
+    font-size: var(--font-size-xl);
   }
 
   // Standard text lists have a non-standard bullet
@@ -106,7 +134,7 @@ main {
       font-size: 1.2625rem;
     }
     p {
-      font-size: $font-size-sm;
+      font-size: var(--font-size-sm);
     }
   }
 }

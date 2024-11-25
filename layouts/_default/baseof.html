@@ -20,9 +20,9 @@
         <meta name="robots" content="noindex, nofollow">
         {{ end }}
 
-        {{ $sass := resources.Get "scss/styles.scss" }}
-        {{ $style := resources.ToCSS $sass }}
-        <link rel="stylesheet" href="{{ $style.Permalink }}">
+        {{ with resources.Get "scss/styles.scss" | css.Sass | resources.Fingerprint }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}">
+        {{ end }}
 
         {{ block "head" . }}{{ partial "head-additions.html" . }}{{ end }}
     </head>

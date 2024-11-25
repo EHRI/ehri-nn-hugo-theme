@@ -58,6 +58,7 @@ body {
   --font-size-md: #{$font-size-md};
   --font-size-lg: #{$font-size-lg};
   --font-size-xl: #{$font-size-xl};
+  --font-size-title: #{$font-size-title};
   --font-family-headings: #{$headings-font-family};
   --font-family-text: #{$font-family-base};
   --font-weight-reg: #{$font-weight-reg};
@@ -80,10 +81,6 @@ html {
   font-size: Min(Max(1rem, 4vw), 16px);
   height: 100vh;
   background-color: var(--white);
-}
-
-html,
-body {
   padding: 0;
   margin: 0;
 }
@@ -91,18 +88,26 @@ body {
 body {
   font-family: var(--font-family-text);
   color: var(--black);
-  //font-size: $font-size-base;
-  line-height: 1.8rem;
+  font-size: var(--font-size-base);
+  line-height: 1.5rem;
 
+  padding: 0;
   display: flex;
   flex-direction: column;
-  background-color: $white;
-  //max-width: 1742px;
+  background-color: var(--white);
   min-height: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 
-  border-top: $font-size-xs solid $wine-red;
+  // Put a theme-coloured border on the top of the page
+  border-top: var(--font-size-xs) solid var(--wine-red);
+
+  @media (min-width: $breakpoint-tablet) {
+    line-height: 1.7rem;
+  }
+
+  @media (min-width: $breakpoint-laptop) {
+    line-height: 1.8rem;
+  }
 }
 
 h1, h2, h3, h4, h5, h6
@@ -111,18 +116,33 @@ h1, h2, h3, h4, h5, h6
 }
 
 h1 {
-  font-size: 4rem;
-  line-height: 4.25rem;
+  font-size: var(--font-size-title);
+  line-height: 2.125rem;
+
+  @media (min-width: $breakpoint-tablet) {
+    font-size: 3.375rem;
+    line-height: 3.625rem;
+  }
+
+  @media (min-width: $breakpoint-laptop) {
+    font-size: 4rem;
+    line-height: 4.25rem;
+  }
 }
 
 h2 {
-  font-size: 2.25rem;
-  line-height: 2.375rem;
+  font-size: 1.625rem;
+  line-height: 1.75rem;
+
+  @media (min-width: $breakpoint-laptop) {
+    font-size: 2.25rem;
+    line-height: 2.375rem;
+  }
 }
 
 h3 {
-  font-size: $font-size-title;
-  line-height: 2.125rem;
+  font-size: var(--font-size-lg);
+  line-height: 1.625rem;
 }
 
 h4 {
@@ -131,47 +151,22 @@ h4 {
 }
 
 h5 {
-  font-size: $font-size-md;
+  font-size: var(--font-size-md);
 }
 
 h6 {
-  font-size: $font-size-base;
+  font-size: var(--font-size-base);
 }
 
 // Default links
 a {
-  color: $wine-red;
+  color: var(--wine-red);
   text-decoration: none;
 }
 
 p  {
   margin-top: 0;
   margin-bottom: 1rem;
-}
-
-@media (max-width: $breakpoint-tablet) {
-  h1 {
-    font-size: 3.375rem;
-    line-height: 3.625rem;
-  }
-
-  body {
-    //font-size: $font-size-sm;
-    line-height: 1.25rem;
-  }
-}
-
-@media (max-width: $breakpoint-phone) {
-  h1 {
-    font-size: 2rem;
-    line-height: 2.125rem;
-  }
-
-  h2 {
-    font-size: 1.625rem;
-    line-height: 1.75rem;
-    align-self: start;
-  }
 }
 
 input,
@@ -185,7 +180,7 @@ textarea {
   width: 100%;
   font-family: var(--font-family-headings);
   font-weight: var(--font-weight-bold);
-  font-size: $font-size-md;
+  font-size: var(--font-size-md);
 }
 
 .form-group ~ button[type='submit'] {
@@ -203,7 +198,6 @@ blockquote {
     border-left: .25rem solid var(--beige);
   }
 }
-
 
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined';

@@ -5,30 +5,28 @@
         </div>
         <a href="{{ relLangURL "" }}" class="title">{{ .Site.Title }}</a>
     </div>
-    {{ if (and (.Site.IsMultiLingual) (.Page.IsTranslated)) }}
+    {{ if (and (hugo.IsMultilingual) (.Page.IsTranslated)) }}
         <ul class="language-switcher">
             {{ $currentLang := .Site.Language.Lang }}
             {{ range .Page.AllTranslations }}
-                {{ if eq .Lang $currentLang }}
-                    <li><a title="{{ .Language.LanguageName }}" href="{{ .Permalink }}">{{ .Lang }}</a></li>
-                {{ else }}
-                    <li class="active"><a title="{{ .Language.LanguageName }}" href="{{ .Permalink }}">{{ .Lang }}</a></li>
-                {{ end }}
+                <li class="language-switcher-item{{ if eq .Lang $currentLang }} active{{ end }}">
+                    <a title="{{ .Language.LanguageName }}" href="{{ .RelPermalink }}">{{ .Lang }}</a>
+                </li>
             {{ end }}
         </ul>
     {{ end }}
-    <nav class="nav main-navbar">
-        <label for="hb-toggle">Show menu</label>
-        <input id="hb-toggle" type="checkbox"/>
-        <span class="hb"></span>
-        <span class="hb"></span>
-        <span class="hb"></span>
+    <nav class="nav main-navbar navbar-container" role="navigation">
+        <label for="hamburger-toggle">Show menu</label>
+        <input id="hamburger-toggle" class="hamburger-toggle" type="checkbox"/>
+        <span class="hamburger-part"></span>
+        <span class="hamburger-part"></span>
+        <span class="hamburger-part"></span>
 
         <div class="navbar">
-            <ul class="text-items">
+            <ul class="text-items header-menu">
                 {{- $page := . -}}
                 {{- range site.Menus.main -}}
-                    <li {{ if $page.IsMenuCurrent .Menu . }}class="active"{{ end }}>
+                    <li class="header-menu-item{{ if $page.IsMenuCurrent .Menu . }} active{{ end }}">
                         <a href="{{ .PageRef | relLangURL }}">{{ or (or (T .Identifier) .Name) .Identifier | safeHTML }}</a>
                     </li>
                 {{- end -}}

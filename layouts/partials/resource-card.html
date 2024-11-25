@@ -10,7 +10,7 @@
         {{ end }}
     </div>
     <div class="resource-info">
-        <header><a href="{{ .url }}">{{ .title }}</a></header>
+        <header class="resource-card-header"><a href="{{ .url }}">{{ .title }}</a></header>
         <a class="resource-icon " href="{{ .url }}"><span class="material-symbols-outlined">{{ .icon }}</span></a>
         <div class="resource-description">
             {{ .content | page.RenderString (dict "display" "block") }}
