@@ -2,7 +2,7 @@
     {{ $page := .}}
     {{- range site.Menus.footer }}
     <li class="footer-menu-item{{ if $page.IsMenuCurrent .Menu . }} active{{ end }}">
-        <a href="{{ .PageRef | relURL }}">{{ or (T .Identifier) .Name | safeHTML }}</a>
+        <a href="{{ .PageRef | relLangURL }}">{{ or (T .Identifier) .Name | safeHTML }}</a>
     </li>
     {{- end }}
 </ul>
