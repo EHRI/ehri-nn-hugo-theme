@@ -1,24 +1,28 @@
-$bg-gradient: linear-gradient(0deg, rgba($purple, 0.9), rgba(lighten($purple, 5%), 0.9)), #FFFFFF;
+
+// Nice dark blue
+$primary: #100a39;
+
+$bg-gradient: linear-gradient(0deg, rgba($primary, 0.9), rgba(lighten($primary, 5%), 0.9)), #FFFFFF;
 
 [data-theme='dark'] {
   // Defaults for theme vars
   //--lm-accent-primary: var(--wine-red);
-  --lm-accent-primary: var(--beige);
-  //--lm-accent-secondary: var(--purple);
+  --lm-accent-primary: #{lighten($beige, 10%)};
+  //--lm-accent-secondary: var(--primary);
   --lm-accent-secondary: #AE8EC1;
   //--lm-bg: var(--white);
-  --lm-bg: var(--purple);
+  --lm-bg: #{$primary};
   //--lm-fg: var(--black);
-  --lm-fg: #{lighten($beige, 10%)};
-  --lm-bg-accent: #{darken($purple, 5%)};
-  --lm-footer-bg: #{lighten($purple, 5%)};
+  --lm-fg: #{lighten($beige, 15%)};
+  --lm-bg-accent: #{$primary};
+  --lm-footer-bg: #{darken($primary, 5%)};
   --lm-accent-tertiary: #{darken($beige, 20%)};
   --lm-footer-fg: var(--beige);
-  --lm-text-accent: #{lighten($purple, 5%)};
+  --lm-text-accent: #{lighten($primary, 5%)};
   --lm-text-disabled: #{darken($white, 20%)};
   //--lm-bg-accent-gradient: var(--beige-light-bg);
   --lm-bg-accent-gradient: #{$bg-gradient};
-  --lm-top-border: #{darken($purple, 10%)};
+  --lm-top-border: #{darken($primary, 10%)};
 }
 
 .paper {
