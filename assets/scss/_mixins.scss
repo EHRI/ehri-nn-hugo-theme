@@ -1,6 +1,6 @@
 @mixin card() {
   border-radius: var(--card-border-radius);
-  background: var(--beige-light-bg);
+  background: var(--lm-bg-accent-gradient);
   box-sizing: border-box;
 }
 
@@ -31,7 +31,7 @@
   text-decoration: none;
 
   &:hover {
-    color: var(--wine-red);
+    color: var(--lm-accent-primary);
     text-decoration: underline;
   }
 }

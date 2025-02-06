@@ -88,12 +88,12 @@
   }
 
   .language-switcher-item a {
-    color: var(--wine-red);
+    color: var(--lm-accent-primary);
     font-weight: var(--font-weight-bold);
   }
 
   .language-switcher-item.active a {
-    color: var(--grey-dark);
+    color: var(--lm-text-disabled);
   }
 
   .language-switcher-item:first-child {
@@ -176,7 +176,7 @@
   // When the hamburger toggle is checked, move the lines to a cross...
   .hamburger-toggle:checked ~ .hamburger-part {
     opacity: 1;
-    background: var(--beige-light-bg);
+    background: var(--lm-bg-accent-gradient);
     transform: rotate(45deg) translate(1px, 3px);
   }
   // The middle burger part is hidden...
@@ -236,8 +236,8 @@
 
 
 .navbar-container .navbar {
-  background-color: var(--grey-dark);
-  color: var(--beige);
+  background-color: var(--lm-footer-bg);
+  color: var(--lm-footer-fg);
   box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
 
   box-sizing: border-box;
@@ -252,7 +252,7 @@
 
   a {
     background-color: transparent;
-    color: var(--beige);
+    color: var(--lm-footer-fg);
     font-weight: var(--font-weight-bolder);
     font-size: var(--font-size-lg);
   }
@@ -296,7 +296,7 @@
     @include button();
     white-space: break-spaces;
     background-color: transparent;
-    color: var(--beige);
+    color: var(--lm-footer-fg);
 
     &:hover {
       font-weight: var(--font-weight-bolder);
@@ -326,16 +326,16 @@
 
     > .header-menu-item > a {
       font-size: var(--font-size-base);
-      color: var(--wine-red);
+      color: var(--lm-accent-primary);
       //white-space: break-spaces;
 
       // On hover, make background beige.
       &:hover {
-        color: var(--wine-red);
+        color: var(--lm-accent-primary);
         font-size: var(--font-size-base);
         font-weight: var(--font-weight-bold);
-        border-color: var(--beige);
-        background-color: var(--beige);
+        border-color: var(--lm-text-accent);
+        background-color: var(--lm-text-accent);
       }
     }
   }

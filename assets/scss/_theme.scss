@@ -1,0 +1,28 @@
+$bg-gradient: linear-gradient(0deg, rgba($purple, 0.9), rgba(lighten($purple, 5%), 0.9)), #FFFFFF;
+
+[data-theme='dark'] {
+  // Defaults for theme vars
+  //--lm-accent-primary: var(--wine-red);
+  --lm-accent-primary: var(--beige);
+  //--lm-accent-secondary: var(--purple);
+  --lm-accent-secondary: #AE8EC1;
+  //--lm-bg: var(--white);
+  --lm-bg: var(--purple);
+  //--lm-fg: var(--black);
+  --lm-fg: #{lighten($beige, 10%)};
+  --lm-bg-accent: #{darken($purple, 5%)};
+  --lm-footer-bg: #{lighten($purple, 5%)};
+  --lm-accent-tertiary: #{darken($beige, 20%)};
+  --lm-footer-fg: var(--beige);
+  --lm-text-accent: #{lighten($purple, 5%)};
+  --lm-text-disabled: #{darken($white, 20%)};
+  //--lm-bg-accent-gradient: var(--beige-light-bg);
+  --lm-bg-accent-gradient: #{$bg-gradient};
+  --lm-top-border: #{darken($purple, 10%)};
+}
+
+.paper {
+  //background: linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2)), transparent;
+  background-image: repeating-linear-gradient(-45deg, rgba(255,255,255, 0.1), rgba(255,255,255, 0.2) 2px, transparent 2px, transparent 6px);
+  background-size: 4px 4px;
+}
