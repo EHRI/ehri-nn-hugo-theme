@@ -38,7 +38,7 @@
       }
       .contact-email {
         grid-area: email;
-        font-size: $font-size-sm;
+        font-size: var(--font-size-sm);
         font-weight: var(--font-weight-reg);
       }
     }

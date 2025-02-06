@@ -6,8 +6,8 @@
 .button-primary {
   @include button();
 
-  color: var(--wine-red);
-  border: 2px solid var(--wine-red);
+  color: var(--theme-fg-accent);
+  border: 2px solid var(--theme-fg-accent);
   white-space: nowrap;
   background-color: transparent;
   font-size: $font-size-md;
@@ -15,8 +15,8 @@
   background-image: none;
 
   &:hover {
-    border-color: var(--beige);
-    background-color: var(--beige);
+    border-color: var(--theme-bg-accent);
+    background-color: var(--theme-bg-accent);
   }
 }
 
@@ -24,6 +24,7 @@
 .follow-buttons {
   display: flex;
   flex-direction: row;
-  column-gap: $space-md;
-  width: min-content;
+  gap: $space-md;
+  width: fit-content;
+  flex-wrap: wrap;
 }

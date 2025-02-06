@@ -40,6 +40,36 @@ body {
 
 // Global custom properties
 :root {
+  // Defaults for color theme
+  // The page background
+  --theme-bg: #{$white};
+  // Text colour
+  --theme-fg: #{$black};
+  // Accented background for e.g. buttons + gradient variety
+  --theme-bg-accent: #{$beige};
+  --theme-bg-accent-gradient: #{$beige-light};
+  // Accented text e.g. links
+  --theme-fg-accent: #{$wine-red};
+  // Muted text, e.g. disabled links
+  --theme-fg-muted: #{$grey-darker};
+
+  // Header varieties of above
+  --theme-header-bg: var(--theme-bg);
+  --theme-header-bg-accent: var(--theme-bg-accent);
+  --theme-header-bg-accent-gradient: var(--theme-bg-accent-gradient);
+  --theme-header-fg: var(--theme-fg);
+  --theme-header-fg-accent: var(--theme-fg-accent);
+  --theme-header-fg-muted: var(--theme-fg-muted);
+
+  // Footer varieties of above
+  --theme-footer-bg: #{$grey-darker};
+  --theme-footer-bg-accent: var(--theme-footer-bg);
+  --theme-footer-bg-accent-gradient: var(--theme-footer-bg-accent);
+  --theme-footer-fg: #{$beige};
+  --theme-footer-fg-accent: var(--theme-footer-fg);
+  --theme-footer-fg-muted: var(--theme-footer-fg);
+
+  /** @deprecated: Old hard-coded colours retained for compatibility */
   --purple: #{$purple};
   --wine-red: #{$wine-red};
   --grey-mid: rgba(0,0,0,0.15);
@@ -50,6 +80,7 @@ body {
   --white: #{$white};
   --black: #{$black};
 
+  // Defaults for fonts and spacing
   --input-border-radius: 5px;
   --card-border-radius: 10px;
   --font-size-base: #{$font-size-base};
@@ -80,26 +111,26 @@ html {
   //font-size: calc(15px + 0.190625vw);
   font-size: Min(Max(1rem, 4vw), 16px);
   height: 100vh;
-  background-color: var(--white);
+  background-color: var(--theme-bg);
   padding: 0;
   margin: 0;
 }
 
 body {
   font-family: var(--font-family-text);
-  color: var(--black);
+  color: var(--theme-fg);
   font-size: var(--font-size-base);
   line-height: 1.5rem;
 
   padding: 0;
   display: flex;
   flex-direction: column;
-  background-color: var(--white);
+  background-color: var(--theme-bg);
   min-height: 100%;
   margin: 0 auto;
 
   // Put a theme-coloured border on the top of the page
-  border-top: var(--font-size-xs) solid var(--wine-red);
+  border-top: var(--font-size-xs) solid var(--theme-fg-accent);
 
   @media (min-width: $breakpoint-tablet) {
     line-height: 1.7rem;
@@ -160,7 +191,7 @@ h6 {
 
 // Default links
 a {
-  color: var(--wine-red);
+  color: var(--theme-fg-accent);
   text-decoration: none;
 }
 
@@ -171,7 +202,9 @@ p  {
 
 input,
 textarea {
-  border: 1px solid var(--beige);
+  color: var(--theme-bg);
+  background-color: var(--theme-bg);
+  border: 1px solid var(--theme-bg-accent);
   border-radius: var(--input-border-radius);
   display: block;
   padding: $space-md;
@@ -194,8 +227,8 @@ blockquote {
     line-height: 1.6rem;
     padding: 2vw;
     margin-bottom: 2vw;
-    color: var(--wine-red);
-    border-left: .25rem solid var(--beige);
+    color: var(--theme-fg-accent);
+    border-left: .25rem solid var(--theme-bg-accent);
   }
 }
 

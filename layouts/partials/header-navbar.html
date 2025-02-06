@@ -1,0 +1,20 @@
+<nav class="nav main-navbar navbar-container" role="navigation">
+    <label for="hamburger-toggle">Show menu</label>
+    <input id="hamburger-toggle" class="hamburger-toggle" type="checkbox"/>
+    <span class="hamburger-part"></span>
+    <span class="hamburger-part"></span>
+    <span class="hamburger-part"></span>
+
+    <div class="navbar">
+        <ul class="text-items header-menu">
+            {{- $page := . -}}
+            {{- range site.Menus.main -}}
+            <li class="header-menu-item{{ if $page.IsMenuCurrent .Menu . }} active{{ end }}">
+                <a href="{{ .PageRef | relLangURL }}">{{ or (or (T .Identifier) .Name) .Identifier | safeHTML }}</a>
+            </li>
+            {{- end -}}
+        </ul>
+
+        {{ partial "social.html" }}
+    </div>
+</nav>

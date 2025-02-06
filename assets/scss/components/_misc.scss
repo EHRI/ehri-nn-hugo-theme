@@ -42,7 +42,7 @@
 
   .page-summary-header {
     font-family: var(--font-family-headings);
-    font-size: $font-size-xl;
+    font-size: var(--font-size-xl);
     line-height: 2rem;
     font-weight: var(--font-weight-bolder);
     margin-bottom: $space-lg;

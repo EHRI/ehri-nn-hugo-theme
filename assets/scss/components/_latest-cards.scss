@@ -50,7 +50,7 @@
 
   .read-more {
     @include content-nav-link();
-    color: var(--wine-red);
+    color: var(--theme-fg-accent);
     white-space: nowrap;
   }
 }
