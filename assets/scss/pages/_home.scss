@@ -29,9 +29,9 @@
   }
 
   h1 {
-    font-size: 1.25rem;
+    font-size: var(--font-size-lg);
     font-weight: var(--font-weight-reg);
-    color: var(--wine-red);
+    color: var(--theme-fg-accent);
 
     @media (min-width: $breakpoint-tablet) {
       font-size: var(--font-size-title);

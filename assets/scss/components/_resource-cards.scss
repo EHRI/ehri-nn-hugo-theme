@@ -33,7 +33,7 @@
     align-content: start;
     grid-template-columns: auto min-content;
     .resource-card-header {
-      font-size: $font-size-xl;
+      font-size: var(--font-size-xl);
       line-height: 2rem; // larger than spec
       font-family: var(--font-family-headings);
       font-weight: var(--font-weight-bolder);
@@ -42,7 +42,7 @@
     .resource-icon {
       grid-column: 2;
       grid-row: 1;
-      font-size: $font-size-title;
+      font-size: var(--font-size-title);
       line-height: 2rem;
       justify-self: end;
     }

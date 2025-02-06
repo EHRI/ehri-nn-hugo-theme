@@ -30,12 +30,12 @@
     > a {
       // Links inside paragraphs are styled differently to the default,
       // and have an animated underline on hover
-      color: var(--grey-darker);
+      color: var(--theme-fg-muted);
       font-weight: bold;
       text-decoration: underline;
-      text-decoration-color: var(--beige);
+      text-decoration-color: var(--theme-bg-accent);
       text-decoration-thickness: 0.25rem;
-      background-image: linear-gradient(to bottom, transparent calc(100%), var(--beige) calc(100%));
+      background-image: linear-gradient(to bottom, transparent calc(100%), var(--theme-bg-accent) calc(100%));
       background-position: bottom;
       background-repeat: no-repeat;
       background-size: 100% 0;
@@ -43,8 +43,8 @@
       transition-property: background-color background-size color;
 
       &:hover {
-        color: var(--wine-red);
-        background-image: linear-gradient(to bottom, var(--beige) calc(100% - .5rem), var(--beige) calc(100% - .5rem));
+        color: var(--theme-fg-accent);
+        background-image: linear-gradient(to bottom, var(--theme-bg-accent) calc(100% - .5rem), var(--theme-bg-accent) calc(100% - .5rem));
         background-size: 100% 100%;
       }
     }
@@ -88,11 +88,11 @@
   }
 
   tbody tr:hover {
-    background: var(--beige-light-bg);
+    background: var(--theme-bg-accent-gradient);
   }
 
   thead {
-    background-color: var(--beige);
+    background-color: var(--theme-bg-accent);
   }
 
   th,
@@ -107,7 +107,7 @@
     font-size: 0.8rem;
     font-family: var(--font-family-headings);
     font-weight: bold;
-    color: var(--wine-red);
+    color: var(--theme-fg-accent);
     text-decoration: none;
     background-image: none;
   }
@@ -118,7 +118,7 @@
     flex-direction: column;
 
     margin: 0 0 2rem;
-    background-color: var(--beige);
+    background-color: var(--theme-bg-accent);
 
     figcaption {
       padding: 0.4vw 1.2vw

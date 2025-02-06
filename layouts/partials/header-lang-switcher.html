@@ -1,0 +1,10 @@
+{{ if (and (hugo.IsMultilingual) (.Page.IsTranslated)) }}
+<ul class="language-switcher">
+    {{ $currentLang := .Site.Language.Lang }}
+    {{ range .Page.AllTranslations }}
+    <li class="language-switcher-item{{ if eq .Lang $currentLang }} active{{ end }}">
+        <a title="{{ .Language.LanguageName }}" href="{{ .RelPermalink }}">{{ .Lang }}</a>
+    </li>
+    {{ end }}
+</ul>
+{{ end }}
