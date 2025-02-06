@@ -6,8 +6,8 @@
 .button-primary {
   @include button();
 
-  color: var(--lm-accent-primary);
-  border: 2px solid var(--lm-accent-primary);
+  color: var(--theme-accent-primary);
+  border: 2px solid var(--theme-accent-primary);
   white-space: nowrap;
   background-color: transparent;
   font-size: $font-size-md;
@@ -15,8 +15,8 @@
   background-image: none;
 
   &:hover {
-    border-color: var(--lm-bg-accent);
-    background-color: var(--lm-bg-accent);
+    border-color: var(--theme-bg-accent);
+    background-color: var(--theme-bg-accent);
   }
 }
 

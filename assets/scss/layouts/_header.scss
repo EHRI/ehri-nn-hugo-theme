@@ -17,6 +17,9 @@
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-bold);
   }
+
+  background-color: var(--theme-header-bg);
+  color: var(--theme-header-fg);
 }
 
 .header.main .banner {
@@ -88,12 +91,12 @@
   }
 
   .language-switcher-item a {
-    color: var(--lm-accent-primary);
+    color: var(--theme-accent-primary);
     font-weight: var(--font-weight-bold);
   }
 
   .language-switcher-item.active a {
-    color: var(--lm-text-disabled);
+    color: var(--theme-text-disabled);
   }
 
   .language-switcher-item:first-child {
@@ -153,7 +156,7 @@
     position: relative;
     top: $space-sm;
 
-    background-color: var(--lm-fg);
+    background-color: var(--theme-fg);
     border-radius: 3px;
 
     z-index: 1001;
@@ -177,7 +180,7 @@
   .hamburger-toggle:checked ~ .hamburger-part {
     opacity: 1;
     // Invert colour
-    background-color: var(--lm-footer-fg);
+    background-color: var(--theme-footer-fg);
     transform: rotate(45deg) translate(1px, 3px);
   }
   // The middle burger part is hidden...
@@ -237,8 +240,8 @@
 
 
 .navbar-container .navbar {
-  background-color: var(--lm-footer-bg);
-  color: var(--lm-footer-fg);
+  background-color: var(--theme-footer-bg);
+  color: var(--theme-footer-fg);
   box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
 
   box-sizing: border-box;
@@ -253,7 +256,7 @@
 
   a {
     background-color: transparent;
-    color: var(--lm-footer-fg);
+    color: var(--theme-footer-fg);
     font-weight: var(--font-weight-bolder);
     font-size: var(--font-size-lg);
   }
@@ -297,7 +300,7 @@
     @include button();
     white-space: break-spaces;
     background-color: transparent;
-    color: var(--lm-footer-fg);
+    color: var(--theme-footer-fg);
 
     &:hover {
       font-weight: var(--font-weight-bolder);
@@ -327,16 +330,16 @@
 
     > .header-menu-item > a {
       font-size: var(--font-size-base);
-      color: var(--lm-accent-primary);
+      color: var(--theme-accent-primary);
       //white-space: break-spaces;
 
       // On hover, make background beige.
       &:hover {
-        color: var(--lm-accent-primary);
+        color: var(--theme-accent-primary);
         font-size: var(--font-size-base);
         font-weight: var(--font-weight-bold);
-        border-color: var(--lm-text-accent);
-        background-color: var(--lm-text-accent);
+        border-color: var(--theme-text-accent);
+        background-color: var(--theme-text-accent);
       }
     }
   }

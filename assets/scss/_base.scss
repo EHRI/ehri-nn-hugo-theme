@@ -51,18 +51,20 @@ body {
   --black: #{$black};
 
   // Defaults for theme vars
-  --lm-accent-primary: var(--wine-red);
-  --lm-accent-secondary: var(--purple);
-  --lm-bg: var(--white);
-  --lm-fg: var(--black);
-  --lm-bg-accent: var(--beige);
-  --lm-footer-bg: var(--grey-darker);
-  --lm-accent-tertiary: var(--grey-darker);
-  --lm-footer-fg: var(--beige);
-  --lm-text-accent: var(--beige);
-  --lm-text-disabled: var(--grey-dark);
-  --lm-bg-accent-gradient: var(--beige-light-bg);
-  --lm-top-border: var(--lm-accent-primary);
+  --theme-accent-primary: var(--wine-red);
+  --theme-accent-secondary: var(--purple);
+  --theme-bg: var(--white);
+  --theme-fg: var(--black);
+  --theme-bg-accent: var(--beige);
+  --theme-header-bg: var(--theme-bg);
+  --theme-header-fg: var(--theme-fg);
+  --theme-footer-bg: var(--grey-darker);
+  --theme-footer-fg: var(--beige);
+  --theme-accent-tertiary: var(--grey-darker);
+  --theme-text-accent: var(--beige);
+  --theme-text-disabled: var(--grey-dark);
+  --theme-bg-accent-gradient: var(--beige-light-bg);
+  --theme-top-border: var(--theme-accent-primary);
 
   --input-border-radius: 5px;
   --card-border-radius: 10px;
@@ -94,26 +96,26 @@ html {
   //font-size: calc(15px + 0.190625vw);
   font-size: Min(Max(1rem, 4vw), 16px);
   height: 100vh;
-  background-color: var(--lm-bg);
+  background-color: var(--theme-bg);
   padding: 0;
   margin: 0;
 }
 
 body {
   font-family: var(--font-family-text);
-  color: var(--lm-fg);
+  color: var(--theme-fg);
   font-size: var(--font-size-base);
   line-height: 1.5rem;
 
   padding: 0;
   display: flex;
   flex-direction: column;
-  background-color: var(--lm-bg);
+  background-color: var(--theme-bg);
   min-height: 100%;
   margin: 0 auto;
 
   // Put a theme-coloured border on the top of the page
-  border-top: var(--font-size-xs) solid var(--lm-top-border);
+  border-top: var(--font-size-xs) solid var(--theme-top-border);
 
   @media (min-width: $breakpoint-tablet) {
     line-height: 1.7rem;
@@ -174,7 +176,7 @@ h6 {
 
 // Default links
 a {
-  color: var(--lm-accent-primary);
+  color: var(--theme-accent-primary);
   text-decoration: none;
 }
 
@@ -185,9 +187,9 @@ p  {
 
 input,
 textarea {
-  color: var(--lm-bg);
-  background-color: var(--lm-bg);
-  border: 1px solid var(--lm-text-accent);
+  color: var(--theme-bg);
+  background-color: var(--theme-bg);
+  border: 1px solid var(--theme-text-accent);
   border-radius: var(--input-border-radius);
   display: block;
   padding: $space-md;
@@ -210,8 +212,8 @@ blockquote {
     line-height: 1.6rem;
     padding: 2vw;
     margin-bottom: 2vw;
-    color: var(--lm-accent-primary);
-    border-left: .25rem solid var(--lm-text-accent);
+    color: var(--theme-accent-primary);
+    border-left: .25rem solid var(--theme-text-accent);
   }
 }
 
