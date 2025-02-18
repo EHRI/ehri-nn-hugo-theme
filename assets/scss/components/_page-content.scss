@@ -137,4 +137,9 @@
       font-size: var(--font-size-sm);
     }
   }
+
+  // Ensure basic images don't overflow the page
+  img {
+    max-width: 100%;
+  }
 }
