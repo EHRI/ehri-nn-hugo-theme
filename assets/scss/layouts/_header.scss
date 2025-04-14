@@ -44,14 +44,14 @@
 }
 
 .header.main .logo img {
-  width: 69px;
+  width: $logo-width-sm;
 
   @media (min-width: $breakpoint-tablet) {
-    width: 117px;
+    width: $logo-width-md;
   }
 
   @media (min-width: $breakpoint-laptop) {
-    width: unset;
+    width: $logo-width-lg;
   }
 }
 
@@ -91,7 +91,7 @@
   }
 
   .language-switcher-item a {
-    color: var(--theme-fg-accent);
+    color: var(--theme-header-fg-accent);
     font-weight: var(--font-weight-bold);
   }
 
@@ -330,16 +330,16 @@
 
     > .header-menu-item > a {
       font-size: var(--font-size-base);
-      color: var(--theme-fg-accent);
+      color: var(--theme-header-fg-accent);
       //white-space: break-spaces;
 
       // On hover, make background beige.
       &:hover {
-        color: var(--theme-fg-accent);
+        color: var(--theme-header-fg-accent);
+        border-color: var(--theme-header-bg-accent);
+        background-color: var(--theme-header-bg-accent);
         font-size: var(--font-size-base);
         font-weight: var(--font-weight-bold);
-        border-color: var(--theme-bg-accent);
-        background-color: var(--theme-bg-accent);
       }
     }
   }
