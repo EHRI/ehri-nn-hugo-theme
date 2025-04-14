@@ -81,14 +81,14 @@
   }
 
   .logo img {
-    width: 69px;
+    width: $logo-width-sm;
 
     @media (min-width: $breakpoint-tablet) {
-      width: 117px;
+      width: $logo-width-md;
     }
 
     @media (min-width: $breakpoint-laptop) {
-      width: unset;
+      width: $logo-width-lg;
     }
   }
 }
