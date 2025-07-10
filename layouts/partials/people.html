@@ -4,20 +4,20 @@
 <section class="people paper page-content">
     <div class="person-list">
         {{ range $data }}
-            <div class="person" id="person-{{ .id }}">
+            <div class="person" id="person-{{ .id }}" vocab="https://schema.org/" typeof="Person">
                 {{ $url := printf "images/%s" .image }}
                 {{ $imgpath := printf "static/%s" $url }}
                 {{ if fileExists $imgpath }}
-                    <img class="person-image" src="{{ $url | relURL }}" alt="{{ .name }} image" />
+                    <img class="person-image" src="{{ $url | relURL }}" alt="{{ .name }} image" property="image" />
                 {{ end }}
-                <h2 class="person-name">{{ .name }}</h2>
-                <div class="person-about">
+                <h2 class="person-name" property="name">{{ .name }}</h2>
+                <div class="person-about" property="description">
                     {{ .about | page.RenderString (dict "display" "block") }}
                 </div>
                 {{ if .email }}
                 <div class="contact-card">
                     <header class="contact-name"><a href="mailto:{{ .email }}">{{ .name }}</a></header>
-                    <a class="contact-email" href="mailto:{{ .email }}">
+                    <a class="contact-email" href="mailto:{{ .email }}" property="email">
                         <i class="fa-regular fa-fw fa-envelope"></i>
                         {{ .email }}
                     </a>

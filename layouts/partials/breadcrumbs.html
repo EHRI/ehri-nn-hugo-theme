@@ -1,12 +1,16 @@
-<nav aria-label="breadcrumb" class="breadcrumb">
+<nav aria-label="breadcrumb" class="breadcrumb" vocab="https://schema.org/" typeof="BreadcrumbList">
     <ol>
         {{ range .Ancestors.Reverse }}
-        <li>
-            <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        <li property="itemListElement" typeof="ListItem">
+            <a href="{{ .RelPermalink }}" property="item" typeof="WebPage">
+                <span property="name">{{ .LinkTitle }}</span>
+            </a>
         </li>
         {{ end }}
-        <li class="active">
-            <a aria-current="page" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        <li class="active" property="itemListElement" typeof="ListItem">
+            <a aria-current="page" href="{{ .RelPermalink }}" property="item" typeof="WebPage">
+                <span property="name">{{ .LinkTitle }}</span>
+            </a>
         </li>
     </ol>
 </nav>
