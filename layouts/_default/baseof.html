@@ -24,6 +24,25 @@
         <link rel="stylesheet" href="{{ .RelPermalink }}">
         {{ end }}
 
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "url": {{ .Site.BaseURL }},
+            "about": {
+                "@type": "Organization",
+                "name": "{{ .Site.Params.contactName }}",
+                "email": "{{ .Site.Params.contactEmail }}"
+            },
+            "sameAs": [
+                {{ .Site.Params.facebookUrl }},
+                {{ .Site.Params.twitterUrl }},
+                {{ .Site.Params.linkedinUrl }},
+                {{ .Site.Params.blueskyUrl }}
+            ]
+        }
+        </script>
+
         {{ block "head" . }}{{ partial "head-additions.html" . }}{{ end }}
     </head>
     <body>

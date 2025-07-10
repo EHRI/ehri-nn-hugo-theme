@@ -1,17 +1,17 @@
-<div class="partner-card">
+<div class="partner-card" vocab="https://schema.org/" typeof="Organization">
     {{ $url := printf "images/%s" .image }}
     {{ $imgpath := printf "static/%s" $url }}
     {{ if fileExists $imgpath }}
-        <img class="logo" src="{{ $url | relURL }}" alt="{{ .title }} image" />
+        <img class="logo" src="{{ $url | relURL }}" alt="{{ .title }} image" property="image" />
     {{ else }}
         {{ $url := "images/cards-still-1.png" }}
-        <img class="logo" src="{{ $url | relURL }}" alt="{{ .title }} image" />
+        <img class="logo" src="{{ $url | relURL }}" alt="{{ .title }} image" property="image" />
     {{ end }}
     <header class="partner-card-header">
-        <h3><a href="{{ .url }}">{{ .title }}</a></h3>
+        <h3 property="name"><a href="{{ .url }}">{{ .title }}</a></h3>
     </header>
     <div class="partner-card-info">
-        {{ .content | page.RenderString (dict "display" "block")  }}
-        <a class="button-primary" target="_blank" href="{{ .url }}">{{ i18n "go_to" (dict "Name" .title) }}</a>
+        <div property="description">{{ .content | page.RenderString (dict "display" "block")  }}</div>
+        <a class="button-primary" target="_blank" href="{{ .url }}" property="sameAs">{{ i18n "go_to" (dict "Name" .title) }}</a>
     </div>
 </div>
