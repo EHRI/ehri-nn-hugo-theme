@@ -24,23 +24,44 @@
         <link rel="stylesheet" href="{{ .RelPermalink }}">
         {{ end }}
 
+        {{ $aboutDict := dict "@type" "Organization" }}
+        {{ if .Site.Params.contactName }} 
+            {{ $aboutDict = merge (dict "name" .Site.Params.contactName) $aboutDict }}
+        {{ end }}
+        {{ if .Site.Params.contactEmail }} 
+            {{ $aboutDict = merge (dict "email" .Site.Params.contactEmail) $aboutDict }}
+        {{ end }}
+
+        {{ $sameAsSlice := slice }}
+        {{ if .Site.Params.facebookUrl }}
+            {{ $sameAsSlice = $sameAsSlice | append .Site.Params.facebookUrl }}
+        {{ end }}
+        {{ if .Site.Params.twitterUrl }}
+            {{ $sameAsSlice = $sameAsSlice | append .Site.Params.twitterUrl }}
+        {{ end }}
+        {{ if .Site.Params.linkedinUrl }}
+            {{ $sameAsSlice = $sameAsSlice | append .Site.Params.linkedinUrl }}
+        {{ end }}
+        {{ if .Site.Params.blueskyUrl }}
+            {{ $sameAsSlice = $sameAsSlice | append .Site.Params.blueskyUrl }}
+        {{ end }}
+
+        {{ $urlDict := dict }}
+        {{ if .Site.BaseURL }}
+        {{ $urlDict = dict "url" .Site.BaseURL }}
+        {{ else }}
+        {{ $urlDict = dict "url" (absURL "") }}
+        {{ end }}
+
+        {{ $schemaOrg := dict 
+            "@context" "https://schema.org" 
+            "@type" "WebSite" 
+            "about" $aboutDict
+            "sameAs" $sameAsSlice
+        }}
+        {{ $schemaOrg = merge $urlDict $schemaOrg }}
         <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "url": {{ .Site.BaseURL }},
-            "about": {
-                "@type": "Organization",
-                "name": "{{ .Site.Params.contactName }}",
-                "email": "{{ .Site.Params.contactEmail }}"
-            },
-            "sameAs": [
-                {{ .Site.Params.facebookUrl }},
-                {{ .Site.Params.twitterUrl }},
-                {{ .Site.Params.linkedinUrl }},
-                {{ .Site.Params.blueskyUrl }}
-            ]
-        }
+        {{ $schemaOrg }}
         </script>
 
         {{ block "head" . }}{{ partial "head-additions.html" . }}{{ end }}
