@@ -1,0 +1,33 @@
+{{- $info := dict -}}
+{{- $about := dict "@type" "Organization" -}}
+{{- with .Site.Params.contactName -}}
+    {{ $about = merge (dict "name" .) $about -}}
+{{- end -}}
+{{- with .Site.Params.contactEmail -}}
+    {{ $about = merge (dict "email" .) $about -}}
+{{- end -}}
+
+{{- $sameAs := slice -}}
+{{- with .Site.Params.facebookUrl -}}
+    {{- $sameAs = $sameAs | append . -}}
+{{- end -}}
+{{- with .Site.Params.twitterUrl -}}
+    {{- $sameAs = $sameAs | append . -}}
+{{- end -}}
+{{- with .Site.Params.blueskyUrl -}}
+    {{- $sameAs = $sameAs | append . -}}
+{{- end -}}
+{{- with .Site.Params.linkedinUrl -}}
+    {{- $sameAs = $sameAs | append . -}}
+{{- end -}}
+
+{{- $jsonLd := dict
+    "@context" "https://schema.org"
+    "@type" "WebSite"
+    "about" $about
+    "url" (absURL "")
+    "sameAs" $sameAs | merge $info | jsonify (dict "indent" "  ") | safeJS
+}}
+<script type="application/ld+json">
+    {{ $jsonLd }}
+</script>

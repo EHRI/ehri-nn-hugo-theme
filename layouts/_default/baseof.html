@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ .Site.Language.Lang }}">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -24,45 +24,8 @@
         <link rel="stylesheet" href="{{ .RelPermalink }}">
         {{ end }}
 
-        {{ $aboutDict := dict "@type" "Organization" }}
-        {{ if .Site.Params.contactName }} 
-            {{ $aboutDict = merge (dict "name" .Site.Params.contactName) $aboutDict }}
-        {{ end }}
-        {{ if .Site.Params.contactEmail }} 
-            {{ $aboutDict = merge (dict "email" .Site.Params.contactEmail) $aboutDict }}
-        {{ end }}
-
-        {{ $sameAsSlice := slice }}
-        {{ if .Site.Params.facebookUrl }}
-            {{ $sameAsSlice = $sameAsSlice | append .Site.Params.facebookUrl }}
-        {{ end }}
-        {{ if .Site.Params.twitterUrl }}
-            {{ $sameAsSlice = $sameAsSlice | append .Site.Params.twitterUrl }}
-        {{ end }}
-        {{ if .Site.Params.linkedinUrl }}
-            {{ $sameAsSlice = $sameAsSlice | append .Site.Params.linkedinUrl }}
-        {{ end }}
-        {{ if .Site.Params.blueskyUrl }}
-            {{ $sameAsSlice = $sameAsSlice | append .Site.Params.blueskyUrl }}
-        {{ end }}
-
-        {{ $urlDict := dict }}
-        {{ if .Site.BaseURL }}
-        {{ $urlDict = dict "url" .Site.BaseURL }}
-        {{ else }}
-        {{ $urlDict = dict "url" (absURL "") }}
-        {{ end }}
-
-        {{ $schemaOrg := dict 
-            "@context" "https://schema.org" 
-            "@type" "WebSite" 
-            "about" $aboutDict
-            "sameAs" $sameAsSlice
-        }}
-        {{ $schemaOrg = merge $urlDict $schemaOrg }}
-        <script type="application/ld+json">
-        {{ $schemaOrg }}
-        </script>
+        {{ partial "header-jsonld.html" . }}
+        {{ partial "header-opengraph.html" . }}
 
         {{ block "head" . }}{{ partial "head-additions.html" . }}{{ end }}
     </head>
