@@ -1,10 +1,54 @@
-{{/* Responsive image partial: may need some work! */}}
+{{/* Responsive image partial with proper size handling and SVG support */}}
+{{ $image := . }}
+{{ $isSVG := eq (path.Ext $image.RelPermalink) ".svg" }}
+
 <picture class="featured-image">
-    {{ with .Resize "640x jpeg" }}
-    <source srcset="{{ .RelPermalink }}" media="(max-width: 640px)" property="image">
+{{ if $isSVG }}
+    {{/* SVG images don't need resizing */}}
+    <img src="{{ $image.RelPermalink }}"
+         alt="Featured Image: {{ $image.Title }}"
+         property="image">
+{{ else }}
+    {{/* Raster images: create responsive versions */}}
+    {{ $originalWidth := $image.Width }}
+
+    {{/* Define target sizes */}}
+    {{ $sizes := slice 640 1024 1920 }}
+
+    {{/* Filter sizes to only those smaller than original */}}
+    {{ $validSizes := slice }}
+    {{ range $sizes }}
+        {{ if le . $originalWidth }}
+            {{ $validSizes = $validSizes | append . }}
+        {{ end }}
     {{ end }}
-    {{ with .Resize "1024x jpeg" }}
-    <source srcset="{{ .RelPermalink }} 2x" media="(max-width: 800px)" property="image">
-    <img src="{{ .RelPermalink }}" alt="Featured Image: {{ .Title }}" width="{{ .Width }}" height="{{ .Height }}" property="image">
+
+    {{ range $index, $size := $validSizes }}
+        {{ $resized := $image.Resize (printf "%dx jpeg q85" $size) }}
+        {{ if eq $index 0 }}
+            {{/* Smallest size for mobile */}}
+    <source srcset="{{ $resized.RelPermalink }}"
+            media="(max-width: {{ $size }}px)"
+            property="image">
+        {{ else if eq $index 1 }}
+            {{/* Medium size for tablets */}}
+    <source srcset="{{ $resized.RelPermalink }}"
+            media="(max-width: {{ add $size 200 }}px)"
+            property="image">
+        {{ end }}
     {{ end }}
+
+    {{/* Fallback: use largest valid size or original if smaller than all targets */}}
+    {{ $fallback := $image }}
+    {{ if gt (len $validSizes) 0 }}
+    {{ $largestSize := index $validSizes (sub (len $validSizes) 1) }}
+    {{ $fallback = $image.Resize (printf "%dx jpeg q85" $largestSize) }}
+    {{ end }}
+
+    <img src="{{ $fallback.RelPermalink }}"
+         alt="Featured Image: {{ $image.Title }}"
+         width="{{ $fallback.Width }}"
+         height="{{ $fallback.Height }}"
+         property="image">
+{{ end }}
 </picture>
