@@ -30,17 +30,23 @@
 }
 
 .header.main .logo {
-  margin-bottom: -1rem;
+  // Negative margin to push down centre line of logo
+  // so the 'H' aligns with nav bar. This is really
+  // annoying and I wish we had a horizontally
+  // symmetrical logo.
+  margin-bottom: -1.4rem;
 
   @media (min-width: $breakpoint-tablet) {
-    // Negative margin to push down centre line of logo
-    // so the 'H' aligns with nav bar.
-    margin-bottom: -$space-xl;
+    margin-bottom: -1.8rem;
   }
 
   @media (min-width: $breakpoint-laptop) {
-    //margin-bottom: -($space-xl + $space-sm);
+    margin-bottom: -2.2rem;
   }
+}
+
+.header.main .logo a {
+  display: flex;
 }
 
 .header.main .logo img {
