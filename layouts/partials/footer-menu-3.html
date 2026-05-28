@@ -1,7 +1,11 @@
 <ul class="menu-3 footer-menu">
     {{ $page := .}}
     <li class="footer-menu-item">
-        <a href="{{ relLangURL "contact" }}">{{ i18n "contact" }}</a>
+        {{ range .Site.Menus.main }}
+            {{ if eq .Identifier "contact" }}
+                <a href="{{ .PageRef | relLangURL }}">{{ or (T .Identifier) .Name | safeHTML }}</a>
+            {{ end }}
+        {{ end }}
         <div class="contact-card">
             <header class="contact-name">
                 <a href="mailto:{{ site.Params.contactEmail }}">
