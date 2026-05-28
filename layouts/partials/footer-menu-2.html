@@ -1,7 +1,11 @@
 <ul class="menu-2 footer-menu">
     {{ $page := .}}
     <li class="footer-menu-item">
-        <a href="{{ relLangURL "services" }}">{{ i18n "services" }}</a>
+        {{ range .Site.Menus.main }}
+            {{ if eq .Identifier "services" }}
+                <a href="{{ .PageRef | relLangURL }}">{{ or (T .Identifier) .Name | safeHTML }}</a>
+            {{ end }}
+        {{ end }}
         <ul class="footer-submenu">
             {{- range site.Menus.services }}
             <li class="footer-menu-item footer-submenu-item">
