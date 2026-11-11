@@ -228,7 +228,7 @@
     }
   }
 
-  @media(min-width: $breakpoint-laptop) {
+  @media #{$mq-desktop-nav} {
     min-width: 60%;
 
     // Hide hamburger toggle
@@ -269,7 +269,7 @@
 
   // At wide widths the menu changes completely to a simple horizontal list of menu items
   // so we need to unset all the styles we've set before.
-  @media (min-width: $breakpoint-laptop) {
+  @media #{$mq-desktop-nav} {
     background-color: transparent;
     box-shadow: none;
 
@@ -323,7 +323,7 @@
 
   // At wide widths the menu changes completely to a
   // simple horizontal list of menu items:
-  @media (min-width: $breakpoint-laptop) {
+  @media #{$mq-desktop-nav} {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -421,7 +421,7 @@
 
   // Hide social icons on wide screens where
   // menu items are displayed horizontally
-  @media (min-width: $breakpoint-laptop) {
+  @media #{$mq-desktop-nav} {
     display: none;
   }
 }
