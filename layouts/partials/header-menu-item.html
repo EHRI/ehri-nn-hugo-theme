@@ -1,0 +1,19 @@
+{{- /*
+  Renders a single header menu entry and, recursively, its children.
+  Params:
+    page:  the current page (for active-state detection)
+    entry: the menu entry to render
+*/ -}}
+{{- $page := .page -}}
+{{- with .entry -}}
+<li class="header-menu-item{{ if .HasChildren }} has-children{{ end }}{{ if or ($page.IsMenuCurrent .Menu .) ($page.HasMenuCurrent .Menu .) }} active{{ end }}">
+    <a href="{{ .PageRef | relLangURL }}">{{ or (T .Identifier) .Name .Identifier | safeHTML }}</a>
+    {{- if .HasChildren }}
+    <ul class="header-submenu">
+        {{- range .Children }}
+        {{ partial "header-menu-item.html" (dict "page" $page "entry" .) }}
+        {{- end }}
+    </ul>
+    {{- end }}
+</li>
+{{- end -}}

@@ -300,9 +300,13 @@
     margin-left: 0;
     // important to prevent an odd resize in transition
     white-space: nowrap;
+
+    &.has-children {
+      position: relative;
+    }
   }
 
-  > .header-menu-item > a {
+  .header-menu-item > a {
     @include button();
     white-space: break-spaces;
     background-color: transparent;
@@ -311,6 +315,10 @@
     &:hover {
       font-weight: var(--font-weight-bolder);
     }
+  }
+
+  .header-submenu {
+    list-style: none;
   }
 
   // At wide widths the menu changes completely to a
@@ -322,7 +330,7 @@
     justify-content: flex-end;
     gap: $space-md;
 
-    &:has(:nth-child(4)) {
+    &:has(> :nth-child(4)) {
       justify-content: space-between;
       gap: unset;
     }
@@ -336,11 +344,56 @@
       margin-bottom: unset;
     }
 
+    > .header-menu-item > .header-submenu {
+      position: absolute;
+      // keep the open dropdown above positioned page content
+      z-index: 1000;
+      max-height: 0;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      text-align: initial;
+      background: var(--theme-header-bg-accent-gradient);
+    }
+
+    .header-submenu > .header-menu-item > a {
+      width: 100%;
+    }
+
+    > .header-menu-item.has-children > a {
+      white-space: nowrap;
+    }
+
+    > .header-menu-item.has-children > a::after {
+      display: inline-block;
+      content: "";
+      width: 0;
+      height: 0;
+      margin-left: 0.4em;
+      vertical-align: middle;
+      border-left: .4rem solid transparent;
+      border-right: .4rem solid transparent;
+      border-top: .4rem solid var(--theme-header-fg-accent);
+      transition: transform .5s ease;
+    }
+
+    // Open on hover, and on keyboard focus anywhere within the item. Keyboard
+    // focus uses :focus-visible so that a link focused by a mouse click doesn't
+    // keep its menu open, and only applies while the pointer isn't over the menu
+    // bar, so that hovering another item never shows two menus at once.
+    > .header-menu-item.has-children:hover > .header-submenu,
+    &:not(:hover) > .header-menu-item.has-children:has(:focus-visible) > .header-submenu {
+      max-height: 1024px;
+      transform: translateY(0);
+      border-radius: var(--input-border-radius);
+      box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+    }
+
     > .header-menu-item:last-child {
       margin-right: 0;
     }
 
-    > .header-menu-item > a {
+    .header-menu-item > a {
       font-size: var(--font-size-base);
       color: var(--theme-header-fg-accent);
       //white-space: break-spaces;

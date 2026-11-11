@@ -9,9 +9,7 @@
         <ul class="text-items header-menu">
             {{- $page := . -}}
             {{- range site.Menus.main -}}
-            <li class="header-menu-item{{ if $page.IsMenuCurrent .Menu . }} active{{ end }}">
-                <a href="{{ .PageRef | relLangURL }}">{{ or (or (T .Identifier) .Name) .Identifier | safeHTML }}</a>
-            </li>
+            {{ partial "header-menu-item.html" (dict "page" $page "entry" .) }}
             {{- end -}}
         </ul>
 
